@@ -40,7 +40,7 @@ ArrayJ Tier4::threshold_mean(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
     return ArrayJ{cle::tier4::threshold_mean_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
-ArrayJ Tier4::parametric_map(DeviceJ * device, ArrayJ * labels, StatisticsMap properties, ArrayJ * dst, std::string property)
+ArrayJ Tier4::parametric_map(DeviceJ * device, ArrayJ * labels, std::unordered_map<std::string, std::vector<float>> properties, ArrayJ * dst, std::string property)
 {
     return ArrayJ{cle::tier4::parametric_map_func(device->get(), labels->get(), properties, dst == nullptr ? nullptr : dst->get(), property)};
 }

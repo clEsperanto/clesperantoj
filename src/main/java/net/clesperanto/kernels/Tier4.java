@@ -145,7 +145,7 @@ public class Tier4 {
 	 * NOTE: The quantification table can be generated using labels_statistics or labels_neighbors_statistics functions, with the 'include_background' parameter set to 'True'.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param labels ({@link ArrayJ}) - Label image.
-	 * @param properties (StatisticsMap) - Statistics properties map (including the background).
+	 * @param properties (HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;) - Statistics properties map (including the background).
 	 * @param output ({@link ArrayJ}) - Output parametric map. (default: None)
 	 * @param property (String) - Name of the property to map. (default: "label")
 	 * @return {@link ArrayJ}
@@ -156,10 +156,10 @@ public class Tier4 {
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_standardDeviationIntensityMap">reference_standardDeviationIntensityMap</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ parametricMap(DeviceJ device, ArrayJ labels, StatisticsMap properties, ArrayJ output, String property) {
+    public static ArrayJ parametricMap(DeviceJ device, ArrayJ labels, HashMap<String, ArrayList<Float>> properties, ArrayJ output, String property) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(labels, "labels cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.parametric_map(device.getRaw(), labels.getRaw(), properties, output == null ? null : output.getRaw(), property));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.parametric_map(device.getRaw(), labels.getRaw(), Utils.toFloatVectorMap(properties), output == null ? null : output.getRaw(), property));
     }
     
 	/**

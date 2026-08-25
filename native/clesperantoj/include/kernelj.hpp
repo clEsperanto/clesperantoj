@@ -326,7 +326,7 @@ public:
 	static ArrayJ threshold_otsu(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
 	static ArrayJ threshold_yen(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
 	static ArrayJ threshold_mean(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
-	static ArrayJ parametric_map(DeviceJ * device, ArrayJ * labels, StatisticsMap properties, ArrayJ * dst, std::string property);
+	static ArrayJ parametric_map(DeviceJ * device, ArrayJ * labels, std::unordered_map<std::string, std::vector<float>> properties, ArrayJ * dst, std::string property);
 	static ArrayJ mean_intensity_map(DeviceJ * device, ArrayJ * src, ArrayJ * labels, ArrayJ * dst);
 	static ArrayJ label_mean_intensity_map(DeviceJ * device, ArrayJ * src, ArrayJ * labels, ArrayJ * dst);
 	static ArrayJ pixel_count_map(DeviceJ * device, ArrayJ * src, ArrayJ * dst);

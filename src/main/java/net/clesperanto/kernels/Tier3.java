@@ -380,7 +380,7 @@ public class Tier3 {
 	 * @param label ({@link ArrayJ}) - Label image to compute the statistics. (default: None)
 	 * @param intensity ({@link ArrayJ}) - Intensity image. (default: None)
 	 * @param include_background (boolean) - Computed the statistics for the background (label 0). (default: False)
-	 * @return StatisticsMap
+	 * @return HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
     public static HashMap<String, ArrayList<Float>> labelsStatistics(DeviceJ device, ArrayJ label, ArrayJ intensity, boolean include_background) {
@@ -395,7 +395,7 @@ public class Tier3 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param intensity ({@link ArrayJ}) - Intensity image. (default: None)
 	 * @param label ({@link ArrayJ}) - Label image to compute the statistics. (default: None)
-	 * @return StatisticsMap
+	 * @return HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_statisticsOfLabelledPixels">reference_statisticsOfLabelledPixels</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
@@ -412,7 +412,7 @@ public class Tier3 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param intensity ({@link ArrayJ}) - Intensity image. (default: None)
 	 * @param label ({@link ArrayJ}) - Label image to compute the statistics. (default: None)
-	 * @return StatisticsMap
+	 * @return HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_statisticsOfBackgroundAndLabelledPixels">reference_statisticsOfBackgroundAndLabelledPixels</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */

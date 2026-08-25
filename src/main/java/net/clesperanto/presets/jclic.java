@@ -114,6 +114,10 @@ public class jclic implements InfoMapper {
                         .pointerTypes("_FloatVector")
                         .define());
         infoMap.put(
+                new Info("std::vector<int>")
+                        .pointerTypes("_IntVector")
+                        .define());
+        infoMap.put(
                 new Info("std::unordered_map<std::string,std::vector<float> >")
                         .pointerTypes("_FloatVectorMap")
                         .define());
