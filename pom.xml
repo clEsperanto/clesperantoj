@@ -19,7 +19,7 @@
 		<license.copyrightOwners>Robert Haase, MPI CBG and Stephane Rigaud, Institut Pasteur</license.copyrightOwners>
 		<!-- NB: Deploy releases to the SciJava Maven repository. -->
 		<releaseProfiles>sign,deploy-to-scijava</releaseProfiles>
-        <clic.version>0.20.0</clic.version>
+        <clic.version>0.24.0</clic.version>
 	</properties>
 
 	<name>clesperantoj</name>

@@ -34,6 +34,132 @@ public class Tier1 {
     }
     
 	/**
+	 * Compute the sin(x) for each element x in the array.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - The input image to be processed.
+	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ sin(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.sin(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Compute the cos(x) for each element x in the array.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - The input image to be processed.
+	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ cos(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.cos(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Compute the tan(x) for each element x in the array.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - The input image to be processed.
+	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ tan(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.tan(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Compute the asin(x) for each element x in the array.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - The input image to be processed.
+	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ asin(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.asin(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Compute the acos(x) for each element x in the array.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - The input image to be processed.
+	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ acos(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.acos(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Compute the atan(x) for each element x in the array.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - The input image to be processed.
+	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ atan(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.atan(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Compute the sinh(x) for each element x in the array.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - The input image to be processed.
+	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ sinh(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.sinh(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Compute the cosh(x) for each element x in the array.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - The input image to be processed.
+	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ cosh(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.cosh(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Compute the tanh(x) for each element x in the array.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - The input image to be processed.
+	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ tanh(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.tanh(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
 	 * Calculates the sum of pairs of pixels x and y from images X and Y weighted with factors a and b.
 	 * &amp;lt;pre&amp;gt;f(x, y, a, b) = x * a + y * b&amp;lt;/pre&amp;gt;.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
@@ -215,7 +341,7 @@ public class Tier1 {
 	 * @param input0 ({@link ArrayJ}) - input binary vector image
 	 * @param input1 ({@link ArrayJ}) - precomputed sums of blocks
 	 * @param output ({@link ArrayJ}) - output enumerated vector image (default: None)
-	 * @param blocksize (int) -  (default: 256)
+	 * @param blocksize (int) - blocksize; must correspond correctly to how the (default: 256)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
@@ -243,6 +369,78 @@ public class Tier1 {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.circular_shift(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), shift_x, shift_y, shift_z));
+    }
+    
+	/**
+	 * Computes the cumulative sum along a given axis.
+	 * Equivalent to numpy.
+	 * cumsum with an explicit axis.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param axis (int) - Axis along which to compute the cumulative sum (0=X, 1=Y, 2=Z). (default: 0)
+	 * @param keep_dims (boolean) - If true, keeps the source dimension metadata when creating the destination. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ cumulativeSum(DeviceJ device, ArrayJ input, ArrayJ output, int axis, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.cumulative_sum(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), axis, keep_dims));
+    }
+    
+	/**
+	 * Computes the cumulative minimum along a given axis.
+	 * Equivalent to numpy.
+	 * cummin with an explicit axis.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param axis (int) - Axis along which to compute the cumulative minimum (0=X, 1=Y, 2=Z). (default: 0)
+	 * @param keep_dims (boolean) - If true, keeps the source dimension metadata when creating the destination. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ cumulativeMin(DeviceJ device, ArrayJ input, ArrayJ output, int axis, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.cumulative_min(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), axis, keep_dims));
+    }
+    
+	/**
+	 * Computes the cumulative maximum along a given axis.
+	 * Equivalent to numpy.
+	 * cummax with an explicit axis.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param axis (int) - Axis along which to compute the cumulative maximum (0=X, 1=Y, 2=Z). (default: 0)
+	 * @param keep_dims (boolean) - If true, keeps the source dimension metadata when creating the destination. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ cumulativeMax(DeviceJ device, ArrayJ input, ArrayJ output, int axis, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.cumulative_max(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), axis, keep_dims));
+    }
+    
+	/**
+	 * Computes the cumulative product along a given axis.
+	 * Equivalent to numpy.
+	 * cumprod with an explicit axis.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param axis (int) - Axis along which to compute the cumulative product (0=X, 1=Y, 2=Z). (default: 0)
+	 * @param keep_dims (boolean) - If true, keeps the source dimension metadata when creating the destination. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ cumulativeProduct(DeviceJ device, ArrayJ input, ArrayJ output, int axis, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.cumulative_product(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), axis, keep_dims));
     }
     
 	/**
@@ -463,18 +661,18 @@ public class Tier1 {
 	 * Divides two images X and Y by each other pixel wise.
 	 * &amp;lt;pre&amp;gt;f(x, y) = x / y&amp;lt;/pre&amp;gt;.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param dividend ({@link ArrayJ}) - Input image to process.
-	 * @param divisor ({@link ArrayJ}) - Second input image to process.
+	 * @param input0 ({@link ArrayJ}) - The dividend input image to process.
+	 * @param input1 ({@link ArrayJ}) - The divisor input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_divideImages">reference_divideImages</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ divideImages(DeviceJ device, ArrayJ dividend, ArrayJ divisor, ArrayJ output) {
+    public static ArrayJ divideImages(DeviceJ device, ArrayJ input0, ArrayJ input1, ArrayJ output) {
         Objects.requireNonNull(device, "device cannot be null");
-		Objects.requireNonNull(dividend, "dividend cannot be null");
-		Objects.requireNonNull(divisor, "divisor cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.divide_images(device.getRaw(), dividend.getRaw(), divisor.getRaw(), output == null ? null : output.getRaw()));
+		Objects.requireNonNull(input0, "input0 cannot be null");
+		Objects.requireNonNull(input1, "input1 cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.divide_images(device.getRaw(), input0.getRaw(), input1.getRaw(), output == null ? null : output.getRaw()));
     }
     
 	/**
@@ -618,12 +816,47 @@ public class Tier1 {
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_exponential">reference_exponential</a>
+	 * @see <a href="https://registry.khronos.org/OpenCL/sdk/3.0/docs/man/html/exp.html">exp.html</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
     public static ArrayJ exponential(DeviceJ device, ArrayJ input, ArrayJ output) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.exponential(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Computes the base-2 exponential of all pixel values.
+	 * f(x) = exp2(x).
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_exponential">reference_exponential</a>
+	 * @see <a href="https://registry.khronos.org/OpenCL/sdk/3.0/docs/man/html/exp.html">exp.html</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ exponential2(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.exponential2(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Computes the base-10 exponential of all pixel values.
+	 * f(x) = exp10(x).
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_exponential">reference_exponential</a>
+	 * @see <a href="https://registry.khronos.org/OpenCL/sdk/3.0/docs/man/html/exp.html">exp.html</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ exponential10(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.exponential10(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
     }
     
 	/**
@@ -890,7 +1123,7 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
-	 * @param connectivity (String) - Filter neighborhood (default: "box")
+	 * @param connectivity (String) - Filter neighborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_laplaceDiamond">reference_laplaceDiamond</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -905,7 +1138,7 @@ public class Tier1 {
 	 * Compute the cross correlation of an image to a given kernel.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
-	 * @param kernel ({@link ArrayJ}) - Input
+	 * @param kernel ({@link ArrayJ}) - Input kernel.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -925,12 +1158,47 @@ public class Tier1 {
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_logarithm">reference_logarithm</a>
+	 * @see <a href="https://registry.khronos.org/OpenCL/sdk/3.0/docs/man/html/log.html">log.html</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
     public static ArrayJ logarithm(DeviceJ device, ArrayJ input, ArrayJ output) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.logarithm(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Computes base 2 logarithm of all pixels values.
+	 * f(x) = log2(x) Author(s): Peter Haub, Robert Haase.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_logarithm">reference_logarithm</a>
+	 * @see <a href="https://registry.khronos.org/OpenCL/sdk/3.0/docs/man/html/log.html">log.html</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ logarithm2(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.logarithm2(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Computes base 10 logarithm of all pixels values.
+	 * f(x) = log10(x) Author(s): Peter Haub, Robert Haase.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_logarithm">reference_logarithm</a>
+	 * @see <a href="https://registry.khronos.org/OpenCL/sdk/3.0/docs/man/html/log.html">log.html</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ logarithm10(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.logarithm10(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
     }
     
 	/**
@@ -1036,7 +1304,7 @@ public class Tier1 {
 	 * @param radius_x (float) - Radius size along x axis. (default: 1)
 	 * @param radius_y (float) - Radius size along y axis. (default: 1)
 	 * @param radius_z (float) - Radius size along z axis. (default: 1)
-	 * @param connectivity (String) - Filter neighborhood (default: "box")
+	 * @param connectivity (String) - Filter neighborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_maximum3DBox">reference_maximum3DBox</a>
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_maximum3DSphere">reference_maximum3DSphere</a>
@@ -1058,7 +1326,7 @@ public class Tier1 {
 	 * @param radius_x (float) - Radius size along x axis. (default: 1)
 	 * @param radius_y (float) - Radius size along y axis. (default: 1)
 	 * @param radius_z (float) - Radius size along z axis. (default: 1)
-	 * @param connectivity (String) - Filter neighborhood (default: "box")
+	 * @param connectivity (String) - Filter neighborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimum3DBox">reference_minimum3DBox</a>
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimum3DSphere">reference_minimum3DSphere</a>
@@ -1075,14 +1343,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_maximumXProjection">reference_maximumXProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ maximumXProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ maximumXProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.maximum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.maximum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -1090,14 +1359,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_maximumYProjection">reference_maximumYProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ maximumYProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ maximumYProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.maximum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.maximum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -1105,14 +1375,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_maximumZProjection">reference_maximumZProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ maximumZProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ maximumZProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.maximum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.maximum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -1164,7 +1435,7 @@ public class Tier1 {
 	 * @param radius_x (float) - Radius size along x axis. (default: 1)
 	 * @param radius_y (float) - Radius size along y axis. (default: 1)
 	 * @param radius_z (float) - Radius size along z axis. (default: 1)
-	 * @param connectivity (String) - Filter neighborhood (default: "box")
+	 * @param connectivity (String) - Filter neighborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_mean3DSphere">reference_mean3DSphere</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -1180,14 +1451,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_meanXProjection">reference_meanXProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ meanXProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ meanXProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mean_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mean_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -1195,14 +1467,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_meanYProjection">reference_meanYProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ meanYProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ meanYProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mean_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mean_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -1210,14 +1483,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_meanZProjection">reference_meanZProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ meanZProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ meanZProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mean_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mean_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -1273,7 +1547,7 @@ public class Tier1 {
 	 * @param radius_x (float) - Radius size along x axis. (default: 1)
 	 * @param radius_y (float) - Radius size along y axis. (default: 1)
 	 * @param radius_z (float) - Radius size along z axis. (default: 1)
-	 * @param connectivity (String) - Filter neighborhood (default: "box")
+	 * @param connectivity (String) - Filter neighborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_median3DSphere">reference_median3DSphere</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -1313,7 +1587,7 @@ public class Tier1 {
 	 * @param radius_x (float) - Radius size along x axis. (default: 1)
 	 * @param radius_y (float) - Radius size along y axis. (default: 1)
 	 * @param radius_z (float) - Radius size along z axis. (default: 1)
-	 * @param connectivity (String) - Filter neighborhood (default: "box")
+	 * @param connectivity (String) - Filter neighborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimum3DBox">reference_minimum3DBox</a>
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimum3DSphere">reference_minimum3DSphere</a>
@@ -1335,7 +1609,7 @@ public class Tier1 {
 	 * @param radius_x (float) - Radius size along x axis. (default: 1)
 	 * @param radius_y (float) - Radius size along y axis. (default: 1)
 	 * @param radius_z (float) - Radius size along z axis. (default: 1)
-	 * @param connectivity (String) - Filter neighborhood (default: "box")
+	 * @param connectivity (String) - Filter neighborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimum3DBox">reference_minimum3DBox</a>
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimum3DSphere">reference_minimum3DSphere</a>
@@ -1387,14 +1661,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimumXProjection">reference_minimumXProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ minimumXProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ minimumXProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.minimum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.minimum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -1402,14 +1677,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimumYProjection">reference_minimumYProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ minimumYProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ minimumYProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.minimum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.minimum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -1417,14 +1693,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimumZProjection">reference_minimumZProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ minimumZProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ minimumZProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.minimum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.minimum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -1484,7 +1761,7 @@ public class Tier1 {
 	 * @param radius_x (float) - Radius size along x axis. (default: 1)
 	 * @param radius_y (float) - Radius size along y axis. (default: 1)
 	 * @param radius_z (float) - Radius size along z axis. (default: 1)
-	 * @param connectivity (String) - Filter neighborhood (default: "box")
+	 * @param connectivity (String) - Filter neighborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
@@ -1495,7 +1772,7 @@ public class Tier1 {
     }
     
 	/**
-	 * Computes the remainder of a division of pairwise pixel values in two images.
+	 * Computes the remainder of a division of pairwise pixel values in two images Uses C truncated division, different than Python's floor division.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input0 ({@link ArrayJ}) - First input image to process.
 	 * @param input1 ({@link ArrayJ}) - Second input image to process.
@@ -1569,7 +1846,7 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output image where results are written into. (default: None)
-	 * @param nan (float) - Value to replace (default: 0)
+	 * @param nan (float) - Value to replace nan with. (default: 0)
 	 * @param posinf (float) - Value to replace +inf with. (default: np.nan_to_num(float('inf')))
 	 * @param neginf (float) - Value to replace -inf with. (default: np.nan_to_num(float('-inf')))
 	 * @return {@link ArrayJ}
@@ -1632,7 +1909,7 @@ public class Tier1 {
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output0 ({@link ArrayJ}) - Output flag (0 or 1).
 	 * @param output1 ({@link ArrayJ}) - Output image where results are written into. (default: None)
-	 * @param connectivity (String) - Filter neighborhood (default: "box")
+	 * @param connectivity (String) - Filter neighborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_nonzeroMaximumBox">reference_nonzeroMaximumBox</a>
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_nonzeroMaximumDiamond">reference_nonzeroMaximumDiamond</a>
@@ -1694,7 +1971,7 @@ public class Tier1 {
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output0 ({@link ArrayJ}) - Output flag (0 or 1).
 	 * @param output1 ({@link ArrayJ}) - Output image where results are written into. (default: None)
-	 * @param connectivity (String) - Filter neigborhood (default: "box")
+	 * @param connectivity (String) - Filter neigborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_nonzeroMinimumBox">reference_nonzeroMinimumBox</a>
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_nonzeroMinimumDiamond">reference_nonzeroMinimumDiamond</a>
@@ -1763,7 +2040,7 @@ public class Tier1 {
 	 * Apply a local maximum filter to an image which only overwrites pixels with value 0.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
-	 * @param flag ({@link ArrayJ}) - Output
+	 * @param flag ({@link ArrayJ}) - Output flag value, 0 or 1.
 	 * @param output ({@link ArrayJ}) - Output image. (default: None)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_onlyzeroOverwriteMaximumBox">reference_onlyzeroOverwriteMaximumBox</a>
@@ -1780,7 +2057,7 @@ public class Tier1 {
 	 * Apply a local maximum filter to an image which only overwrites pixels with value 0.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
-	 * @param flag ({@link ArrayJ}) - Output
+	 * @param flag ({@link ArrayJ}) - Output flag value, 0 or 1.
 	 * @param output ({@link ArrayJ}) - Output image. (default: None)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_onlyzeroOverwriteMaximumDiamond">reference_onlyzeroOverwriteMaximumDiamond</a>
@@ -1797,9 +2074,9 @@ public class Tier1 {
 	 * Apply a local maximum filter to an image which only overwrites pixels with value 0.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
-	 * @param flag ({@link ArrayJ}) - Output
+	 * @param flag ({@link ArrayJ}) - Output flag value, 0 or 1.
 	 * @param output ({@link ArrayJ}) - Output image. (default: None)
-	 * @param connectivity (String) - Filter neigborhood (default: "box")
+	 * @param connectivity (String) - Filter neigborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_onlyzeroOverwriteMaximumBox">reference_onlyzeroOverwriteMaximumBox</a>
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_onlyzeroOverwriteMaximumDiamond">reference_onlyzeroOverwriteMaximumDiamond</a>
@@ -1846,7 +2123,8 @@ public class Tier1 {
     }
     
 	/**
-	 * Crops an image according to a defined range and step size.
+	 * Read values from a strided region into a destination image in place, following the rule src[start + i * step] = dst[i] along each dimension.
+	 * The destination image is not reallocated.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - First input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
@@ -1862,10 +2140,59 @@ public class Tier1 {
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
+	@Deprecated
     public static ArrayJ range(DeviceJ device, ArrayJ input, ArrayJ output, int start_x, int stop_x, int step_x, int start_y, int stop_y, int step_y, int start_z, int stop_z, int step_z) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.range(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), start_x, stop_x, step_x, start_y, stop_y, step_y, start_z, stop_z, step_z));
+    }
+    
+	/**
+	 * Read values from a strided region into a destination image in place, following the rule src[start + i * step] = dst[i] along each dimension.
+	 * The destination image is not reallocated.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - First input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param start_x (int) - Range starting value in x (default: None)
+	 * @param stop_x (int) - Range stop value in x (default: None)
+	 * @param step_x (int) - Range step value in x (default: None)
+	 * @param start_y (int) - Range starting value in y (default: None)
+	 * @param stop_y (int) - Range stop value in y (default: None)
+	 * @param step_y (int) - Range step value in y (default: None)
+	 * @param start_z (int) - Range starting value in z (default: None)
+	 * @param stop_z (int) - Range stop value in z (default: None)
+	 * @param step_z (int) - Range step value in z (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ gather(DeviceJ device, ArrayJ input, ArrayJ output, int start_x, int stop_x, int step_x, int start_y, int stop_y, int step_y, int start_z, int stop_z, int step_z) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.gather(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), start_x, stop_x, step_x, start_y, stop_y, step_y, start_z, stop_z, step_z));
+    }
+    
+	/**
+	 * Writes a source image into a strided region of a destination image in place, following the rule dst[start + i * step] = src[i] along each dimension.
+	 * The destination image is not reallocated.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to scatter into dst.
+	 * @param output ({@link ArrayJ}) - Destination image written in place.
+	 * @param start_x (int) - Range starting value in x (default: None)
+	 * @param stop_x (int) - Range stop value in x (default: None)
+	 * @param step_x (int) - Range step value in x (default: None)
+	 * @param start_y (int) - Range starting value in y (default: None)
+	 * @param stop_y (int) - Range stop value in y (default: None)
+	 * @param step_y (int) - Range step value in y (default: None)
+	 * @param start_z (int) - Range starting value in z (default: None)
+	 * @param stop_z (int) - Range stop value in z (default: None)
+	 * @param step_z (int) - Range step value in z (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ scatter(DeviceJ device, ArrayJ input, ArrayJ output, int start_x, int stop_x, int step_x, int start_y, int stop_y, int step_y, int start_z, int stop_z, int step_z) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.scatter(device.getRaw(), input.getRaw(), output.getRaw(), start_x, stop_x, step_x, start_y, stop_y, step_y, start_z, stop_z, step_z));
     }
     
 	/**
@@ -2058,7 +2385,8 @@ public class Tier1 {
     }
     
 	/**
-	 * Computes 1/x for every pixel value This function is supposed to work similarly to its counter part in numpy [1].
+	 * Computes 1/x for every pixel value x in a given image X.
+	 * &amp;lt;pre&amp;gt;f(x) = 1 / x&amp;lt;/pre&amp;gt;.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
@@ -2378,18 +2706,102 @@ public class Tier1 {
     }
     
 	/**
+	 * Determines the standard deviation intensity projection of an image stack along X.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param ddof (int) - Delta degrees of freedom. The divisor used is (n - ddof). (default: 0)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_standardDeviationXProjection">reference_standardDeviationXProjection</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ stdXProjection(DeviceJ device, ArrayJ input, ArrayJ output, int ddof, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.std_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), ddof, keep_dims));
+    }
+    
+	/**
+	 * Determines the standard deviation intensity projection of an image stack along Y.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param ddof (int) - Delta degrees of freedom. The divisor used is (n - ddof). (default: 0)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_standardDeviationYProjection">reference_standardDeviationYProjection</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ stdYProjection(DeviceJ device, ArrayJ input, ArrayJ output, int ddof, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.std_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), ddof, keep_dims));
+    }
+    
+	/**
 	 * Determines the standard deviation intensity projection of an image stack along Z.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param ddof (int) - Delta degrees of freedom. The divisor used is (n - ddof). (default: 0)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_standardDeviationZProjection">reference_standardDeviationZProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ stdZProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ stdZProjection(DeviceJ device, ArrayJ input, ArrayJ output, int ddof, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.std_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.std_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), ddof, keep_dims));
+    }
+    
+	/**
+	 * Determines the variance intensity projection of an image stack along X.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param ddof (int) - Delta degrees of freedom. The divisor used is (n - ddof). (default: 0)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ varianceXProjection(DeviceJ device, ArrayJ input, ArrayJ output, int ddof, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.variance_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), ddof, keep_dims));
+    }
+    
+	/**
+	 * Determines the variance intensity projection of an image stack along Y.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param ddof (int) - Delta degrees of freedom. The divisor used is (n - ddof). (default: 0)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ varianceYProjection(DeviceJ device, ArrayJ input, ArrayJ output, int ddof, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.variance_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), ddof, keep_dims));
+    }
+    
+	/**
+	 * Determines the variance intensity projection of an image stack along Z.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param ddof (int) - Delta degrees of freedom. The divisor used is (n - ddof). (default: 0)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ varianceZProjection(DeviceJ device, ArrayJ input, ArrayJ output, int ddof, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.variance_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), ddof, keep_dims));
     }
     
 	/**
@@ -2431,14 +2843,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_sumXProjection">reference_sumXProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ sumXProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ sumXProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.sum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.sum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -2446,14 +2859,15 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_sumYProjection">reference_sumYProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ sumYProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ sumYProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.sum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.sum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -2461,14 +2875,63 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_sumZProjection">reference_sumZProjection</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ sumZProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ sumZProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.sum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.sum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
+    }
+    
+	/**
+	 * Determines the product intensity projection of an image along X.
+	 * &amp;lt;pre&amp;gt;f(y,z) = prod_x(src(x,y,z))&amp;lt;/pre&amp;gt;.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ productXProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.product_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
+    }
+    
+	/**
+	 * Determines the product intensity projection of an image along Y.
+	 * &amp;lt;pre&amp;gt;f(x,z) = prod_y(src(x,y,z))&amp;lt;/pre&amp;gt;.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ productYProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.product_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
+    }
+    
+	/**
+	 * Determines the product intensity projection of an image along Z.
+	 * &amp;lt;pre&amp;gt;f(x,y) = prod_z(src(x,y,z))&amp;lt;/pre&amp;gt;.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ productZProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.product_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -2583,7 +3046,7 @@ public class Tier1 {
 	 * @param radius_x (float) - Radius size along x axis. (default: 1)
 	 * @param radius_y (float) - Radius size along y axis. (default: 1)
 	 * @param radius_z (float) - Radius size along z axis. (default: 1)
-	 * @param connectivity (String) - Filter neigborhood (default: "box")
+	 * @param connectivity (String) - Filter neigborhood connectivity, "box" or "sphere" (default: "box")
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_varianceBox">reference_varianceBox</a>
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_varianceSphere">reference_varianceSphere</a>
@@ -2617,13 +3080,14 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image stack
 	 * @param output ({@link ArrayJ}) - altitude map (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ xPositionOfMaximumXProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ xPositionOfMaximumXProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.x_position_of_maximum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.x_position_of_maximum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -2632,13 +3096,14 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image stack
 	 * @param output ({@link ArrayJ}) - altitude map (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ xPositionOfMinimumXProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ xPositionOfMinimumXProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.x_position_of_minimum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.x_position_of_minimum_x_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -2647,13 +3112,14 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image stack
 	 * @param output ({@link ArrayJ}) - altitude map (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ yPositionOfMaximumYProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ yPositionOfMaximumYProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.y_position_of_maximum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.y_position_of_maximum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -2662,13 +3128,14 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image stack
 	 * @param output ({@link ArrayJ}) - altitude map (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ yPositionOfMinimumYProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ yPositionOfMinimumYProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.y_position_of_minimum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.y_position_of_minimum_y_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -2677,13 +3144,14 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image stack
 	 * @param output ({@link ArrayJ}) - altitude map (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ zPositionOfMaximumZProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ zPositionOfMaximumZProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.z_position_of_maximum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.z_position_of_maximum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -2692,13 +3160,14 @@ public class Tier1 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image stack
 	 * @param output ({@link ArrayJ}) - altitude map (default: None)
+	 * @param keep_dims (boolean) - If true, the reduced axis is kept as a singleton dimension in the output. (default: False)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
-    public static ArrayJ zPositionOfMinimumZProjection(DeviceJ device, ArrayJ input, ArrayJ output) {
+    public static ArrayJ zPositionOfMinimumZProjection(DeviceJ device, ArrayJ input, ArrayJ output, boolean keep_dims) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.z_position_of_minimum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.z_position_of_minimum_z_projection(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), keep_dims));
     }
     
 	/**
@@ -2722,8 +3191,8 @@ public class Tier1 {
 	/**
 	 * Compute the mean_of_touching_neighbors.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param vector ({@link ArrayJ}) - Input
-	 * @param matrix ({@link ArrayJ}) - Input adjacency
+	 * @param vector ({@link ArrayJ}) - Input vector to process.
+	 * @param matrix ({@link ArrayJ}) - Input adjacency matrix to process.
 	 * @param output ({@link ArrayJ}) - Output result vector. (default: None)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -2738,8 +3207,8 @@ public class Tier1 {
 	/**
 	 * Compute the median_of_touching_neighbors.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param vector ({@link ArrayJ}) - Input
-	 * @param matrix ({@link ArrayJ}) - Input adjacency
+	 * @param vector ({@link ArrayJ}) - Input vector to process.
+	 * @param matrix ({@link ArrayJ}) - Input adjacency matrix to process.
 	 * @param output ({@link ArrayJ}) - Output result vector. (default: None)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -2754,8 +3223,8 @@ public class Tier1 {
 	/**
 	 * Compute the minimum_of_touching_neighbors.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param vector ({@link ArrayJ}) - Input
-	 * @param matrix ({@link ArrayJ}) - Input adjacency
+	 * @param vector ({@link ArrayJ}) - Input vector to process.
+	 * @param matrix ({@link ArrayJ}) - Input adjacency matrix to process.
 	 * @param output ({@link ArrayJ}) - Output result vector. (default: None)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -2770,8 +3239,8 @@ public class Tier1 {
 	/**
 	 * Compute the maximum_of_touching_neighbors.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param vector ({@link ArrayJ}) - Input
-	 * @param matrix ({@link ArrayJ}) - Input adjacency
+	 * @param vector ({@link ArrayJ}) - Input vector to process.
+	 * @param matrix ({@link ArrayJ}) - Input adjacency matrix to process.
 	 * @param output ({@link ArrayJ}) - Output result vector. (default: None)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -2786,8 +3255,8 @@ public class Tier1 {
 	/**
 	 * Compute the standard_deviation_of_touching_neighbors.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param vector ({@link ArrayJ}) - Input
-	 * @param matrix ({@link ArrayJ}) - Input adjacency
+	 * @param vector ({@link ArrayJ}) - Input vector to process.
+	 * @param matrix ({@link ArrayJ}) - Input adjacency matrix to process.
 	 * @param output ({@link ArrayJ}) - Output result vector. (default: None)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -2802,8 +3271,8 @@ public class Tier1 {
 	/**
 	 * Compute the mode_of_touching_neighbors.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param vector ({@link ArrayJ}) - Input
-	 * @param matrix ({@link ArrayJ}) - Input adjacency
+	 * @param vector ({@link ArrayJ}) - Input vector to process.
+	 * @param matrix ({@link ArrayJ}) - Input adjacency matrix to process.
 	 * @param output ({@link ArrayJ}) - Output result vector. (default: None)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -2813,6 +3282,220 @@ public class Tier1 {
 		Objects.requireNonNull(vector, "vector cannot be null");
 		Objects.requireNonNull(matrix, "matrix cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mode_of_touching_neighbors(device.getRaw(), vector.getRaw(), matrix.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Computes each values to integral values using the round to positive infinity rounding mode.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ ceil(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.ceil(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Computes each values to integral values using the round to negative infinity rounding mode.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ floor(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.floor(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Computes each values to integral values using the round to nearest integer rounding mode.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ round(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.round(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Computes each values to integral values by removing the fractional part.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ truncate(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.truncate(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * For each label in a touch matrix and its corresponding distance matrix, compute the minimum distance to all touching neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param input_touch_matrix ({@link ArrayJ}) - Input touch matrix encoding which labels are neighbors.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the minimum touching-neighbor distance per label. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ minimumDistanceTouchingNeighbors(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ input_touch_matrix, ArrayJ output_index_list) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+		Objects.requireNonNull(input_touch_matrix, "input_touch_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.minimum_distance_touching_neighbors(device.getRaw(), input_distance_matrix.getRaw(), input_touch_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw()));
+    }
+    
+	/**
+	 * For each label in a touch matrix and its corresponding distance matrix, compute the maximum distance to all touching neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param input_touch_matrix ({@link ArrayJ}) - Input touch matrix encoding which labels are neighbors.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the maximum touching-neighbor distance per label. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ maximumDistanceTouchingNeighbors(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ input_touch_matrix, ArrayJ output_index_list) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+		Objects.requireNonNull(input_touch_matrix, "input_touch_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.maximum_distance_touching_neighbors(device.getRaw(), input_distance_matrix.getRaw(), input_touch_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw()));
+    }
+    
+	/**
+	 * For each label in a touch matrix and its corresponding distance matrix, compute the mean distance to all touching neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param input_touch_matrix ({@link ArrayJ}) - Input touch matrix encoding which labels are neighbors.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the mean touching-neighbor distance per label. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ meanDistanceTouchingNeighbors(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ input_touch_matrix, ArrayJ output_index_list) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+		Objects.requireNonNull(input_touch_matrix, "input_touch_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mean_distance_touching_neighbors(device.getRaw(), input_distance_matrix.getRaw(), input_touch_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw()));
+    }
+    
+	/**
+	 * For each label in a touch matrix and its corresponding distance matrix, compute the mean distance to all touching neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param input_touch_matrix ({@link ArrayJ}) - Input touch matrix encoding which labels are neighbors.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the average touching-neighbor distance per label. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+	@Deprecated
+    public static ArrayJ averageDistanceTouchingNeighbors(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ input_touch_matrix, ArrayJ output_index_list) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+		Objects.requireNonNull(input_touch_matrix, "input_touch_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.average_distance_touching_neighbors(device.getRaw(), input_distance_matrix.getRaw(), input_touch_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw()));
+    }
+    
+	/**
+	 * For each label in a distance matrix, compute the mean distance to its N nearest neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the mean N-nearest-neighbor distance per label. (default: None)
+	 * @param n (int) - Number of nearest neighbors to consider. (default: 1)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ meanDistanceNNearestNeighbors(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ output_index_list, int n) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mean_distance_n_nearest_neighbors(device.getRaw(), input_distance_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw(), n));
+    }
+    
+	/**
+	 * For each label in a distance matrix, compute the maximum distance among its N nearest neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the maximum N-nearest-neighbor distance per label. (default: None)
+	 * @param n (int) - Number of nearest neighbors to consider. (default: 1)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ maximumDistanceNNearestNeighbors(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ output_index_list, int n) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.maximum_distance_n_nearest_neighbors(device.getRaw(), input_distance_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw(), n));
+    }
+    
+	/**
+	 * For each label in a distance matrix, compute the mean distance to its N farthest neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the mean N-farthest-neighbor distance per label. (default: None)
+	 * @param n (int) - Number of farthest neighbors to consider. (default: 1)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ meanDistanceNFarthestNeighbors(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ output_index_list, int n) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.mean_distance_n_farthest_neighbors(device.getRaw(), input_distance_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw(), n));
+    }
+    
+	/**
+	 * For each label in a distance matrix, compute the mean distance to its N nearest neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the mean N-nearest-neighbor distance per label. (default: None)
+	 * @param n (int) - Number of nearest neighbors to consider. (default: 1)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+	@Deprecated
+    public static ArrayJ averageDistanceOfNNearestDistances(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ output_index_list, int n) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.average_distance_of_n_nearest_distances(device.getRaw(), input_distance_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw(), n));
+    }
+    
+	/**
+	 * For each label in a distance matrix, compute the maximum distance among its N nearest neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the maximum N-nearest-neighbor distance per label. (default: None)
+	 * @param n (int) - Number of nearest neighbors to consider. (default: 1)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+	@Deprecated
+    public static ArrayJ maximumDistanceOfNShortestDistances(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ output_index_list, int n) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.maximum_distance_of_n_shortest_distances(device.getRaw(), input_distance_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw(), n));
+    }
+    
+	/**
+	 * For each label in a distance matrix, compute the mean distance to its N farthest neighbors.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_distance_matrix ({@link ArrayJ}) - Input distance matrix containing pairwise distances between labels.
+	 * @param output_index_list ({@link ArrayJ}) - Output vector containing the mean N-farthest-neighbor distance per label. (default: None)
+	 * @param n (int) - Number of farthest neighbors to consider. (default: 1)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+	@Deprecated
+    public static ArrayJ averageDistanceOfNFarOffDistances(DeviceJ device, ArrayJ input_distance_matrix, ArrayJ output_index_list, int n) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_distance_matrix, "input_distance_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.average_distance_of_n_far_off_distances(device.getRaw(), input_distance_matrix.getRaw(), output_index_list == null ? null : output_index_list.getRaw(), n));
     }
     
 }

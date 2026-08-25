@@ -184,4 +184,35 @@ public class Tier5 {
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier5.normalize(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), low_percentile, high_percentile));
     }
     
+	/**
+	 * Measures partial touching values between labels and determines their standard deviation in a vector.
+	 * For each label X, this function analyzes how much of its perimeter touches neighboring labels and computes the standard deviation of these partial touching values.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_label ({@link ArrayJ}) - Input label image.
+	 * @param output_vector ({@link ArrayJ}) - Output vector containing standard deviations per label. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ standardDeviationPartialTouchingAreaMatrix(DeviceJ device, ArrayJ input_label, ArrayJ output_vector) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_label, "input_label cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier5.standard_deviation_partial_touching_area_matrix(device.getRaw(), input_label.getRaw(), output_vector == null ? null : output_vector.getRaw()));
+    }
+    
+	/**
+	 * Measures partial touching values between labels and determines their standard deviation in a vector.
+	 * For each label X, this function analyzes how much of its perimeter touches neighboring labels and computes the standard deviation of these partial touching values.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_label ({@link ArrayJ}) - Input label image.
+	 * @param output_vector ({@link ArrayJ}) - Output vector containing standard deviations per label. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+	@Deprecated
+    public static ArrayJ standardDeviationTouchPortion(DeviceJ device, ArrayJ input_label, ArrayJ output_vector) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_label, "input_label cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier5.standard_deviation_touch_portion(device.getRaw(), input_label.getRaw(), output_vector == null ? null : output_vector.getRaw()));
+    }
+    
 }

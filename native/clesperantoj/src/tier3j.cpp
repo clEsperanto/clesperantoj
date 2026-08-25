@@ -60,6 +60,16 @@ ArrayJ Tier3::generate_touch_matrix(DeviceJ * device, ArrayJ * src, ArrayJ * dst
     return ArrayJ{cle::tier3::generate_touch_matrix_func(device->get(), src->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get())};
 }
 
+ArrayJ Tier3::generate_touching_area_matrix(DeviceJ * device, ArrayJ * src_label, ArrayJ * dst_matrix)
+{
+    return ArrayJ{cle::tier3::generate_touching_area_matrix_func(device->get(), src_label->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get())};
+}
+
+ArrayJ Tier3::generate_touch_count_matrix(DeviceJ * device, ArrayJ * src_label, ArrayJ * dst_matrix)
+{
+    return ArrayJ{cle::tier3::generate_touch_count_matrix_func(device->get(), src_label->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get())};
+}
+
 ArrayJ Tier3::histogram(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int num_bins, float minimum_intensity, float maximum_intensity)
 {
     return ArrayJ{cle::tier3::histogram_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), num_bins, minimum_intensity, maximum_intensity)};
@@ -95,6 +105,11 @@ ArrayJ Tier3::morphological_chan_vese(DeviceJ * device, ArrayJ * src, ArrayJ * d
     return ArrayJ{cle::tier3::morphological_chan_vese_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), num_iter, smoothing, lambda1, lambda2)};
 }
 
+std::unordered_map<std::string, std::vector<float>> Tier3::labels_statistics(DeviceJ * device, ArrayJ * label, ArrayJ * intensity, bool include_background)
+{
+    return cle::tier3::labels_statistics_func(device->get(), label == nullptr ? nullptr : label->get(), intensity == nullptr ? nullptr : intensity->get(), include_background);
+}
+
 std::unordered_map<std::string, std::vector<float>> Tier3::statistics_of_labelled_pixels(DeviceJ * device, ArrayJ * intensity, ArrayJ * label)
 {
     return cle::tier3::statistics_of_labelled_pixels_func(device->get(), intensity == nullptr ? nullptr : intensity->get(), label == nullptr ? nullptr : label->get());
@@ -118,6 +133,11 @@ ArrayJ Tier3::tubeness(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float sigma
 ArrayJ Tier3::artificial_tissue(DeviceJ * device, int width, int height, int depth, float delta_x, float delta_y, float delta_z, float sigma_x, float sigma_y, float sigma_z)
 {
     return ArrayJ{cle::tier3::artificial_tissue_func(device->get(), width, height, depth, delta_x, delta_y, delta_z, sigma_x, sigma_y, sigma_z)};
+}
+
+ArrayJ Tier3::read_map_values(DeviceJ * device, ArrayJ * map, ArrayJ * label, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier3::read_map_values_func(device->get(), map->get(), label->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
 ArrayJ Tier3::read_intensities_from_map(DeviceJ * device, ArrayJ * label, ArrayJ * map, ArrayJ * dst)

@@ -10,6 +10,51 @@ ArrayJ Tier1::absolute(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
     return ArrayJ{cle::tier1::absolute_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
+ArrayJ Tier1::sin(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::sin_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::cos(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::cos_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::tan(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::tan_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::asin(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::asin_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::acos(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::acos_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::atan(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::atan_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::sinh(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::sinh_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::cosh(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::cosh_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::tanh(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::tanh_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
 ArrayJ Tier1::add_images_weighted(DeviceJ * device, ArrayJ * src0, ArrayJ * src1, ArrayJ * dst, float factor1, float factor2)
 {
     return ArrayJ{cle::tier1::add_images_weighted_func(device->get(), src0->get(), src1->get(), dst == nullptr ? nullptr : dst->get(), factor1, factor2)};
@@ -68,6 +113,26 @@ ArrayJ Tier1::block_enumerate(DeviceJ * device, ArrayJ * src0, ArrayJ * src1, Ar
 ArrayJ Tier1::circular_shift(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int shift_x, int shift_y, int shift_z)
 {
     return ArrayJ{cle::tier1::circular_shift_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), shift_x, shift_y, shift_z)};
+}
+
+ArrayJ Tier1::cumulative_sum(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int axis, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::cumulative_sum_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), axis, keep_dims)};
+}
+
+ArrayJ Tier1::cumulative_min(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int axis, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::cumulative_min_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), axis, keep_dims)};
+}
+
+ArrayJ Tier1::cumulative_max(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int axis, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::cumulative_max_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), axis, keep_dims)};
+}
+
+ArrayJ Tier1::cumulative_product(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int axis, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::cumulative_product_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), axis, keep_dims)};
 }
 
 ArrayJ Tier1::convolve(DeviceJ * device, ArrayJ * src0, ArrayJ * src1, ArrayJ * dst)
@@ -130,9 +195,9 @@ ArrayJ Tier1::binary_dilate(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float 
     return ArrayJ{cle::tier1::binary_dilate_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), radius_x, radius_y, radius_z, connectivity)};
 }
 
-ArrayJ Tier1::divide_images(DeviceJ * device, ArrayJ * dividend, ArrayJ * divisor, ArrayJ * dst)
+ArrayJ Tier1::divide_images(DeviceJ * device, ArrayJ * src0, ArrayJ * src1, ArrayJ * dst)
 {
-    return ArrayJ{cle::tier1::divide_images_func(device->get(), dividend->get(), divisor->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::divide_images_func(device->get(), src0->get(), src1->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
 ArrayJ Tier1::divide_scalar_by_image(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float scalar)
@@ -173,6 +238,16 @@ ArrayJ Tier1::binary_erode(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float r
 ArrayJ Tier1::exponential(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
 {
     return ArrayJ{cle::tier1::exponential_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::exponential2(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::exponential2_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::exponential10(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::exponential10_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
 ArrayJ Tier1::flip(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool flip_x, bool flip_y, bool flip_z)
@@ -260,6 +335,16 @@ ArrayJ Tier1::logarithm(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
     return ArrayJ{cle::tier1::logarithm_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
+ArrayJ Tier1::logarithm2(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::logarithm2_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::logarithm10(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::logarithm10_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
 ArrayJ Tier1::mask(DeviceJ * device, ArrayJ * src, ArrayJ * mask, ArrayJ * dst)
 {
     return ArrayJ{cle::tier1::mask_func(device->get(), src->get(), mask->get(), dst == nullptr ? nullptr : dst->get())};
@@ -295,19 +380,19 @@ ArrayJ Tier1::grayscale_dilate(DeviceJ * device, ArrayJ * src, ArrayJ * dst, flo
     return ArrayJ{cle::tier1::grayscale_dilate_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), radius_x, radius_y, radius_z, connectivity)};
 }
 
-ArrayJ Tier1::maximum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::maximum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::maximum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::maximum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::maximum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::maximum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::maximum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::maximum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::maximum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::maximum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::maximum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::maximum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
 ArrayJ Tier1::mean_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z)
@@ -325,19 +410,19 @@ ArrayJ Tier1::mean_filter(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float ra
     return ArrayJ{cle::tier1::mean_filter_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), radius_x, radius_y, radius_z, connectivity)};
 }
 
-ArrayJ Tier1::mean_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::mean_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::mean_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::mean_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::mean_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::mean_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::mean_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::mean_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::mean_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::mean_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::mean_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::mean_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
 ArrayJ Tier1::median_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z)
@@ -380,19 +465,19 @@ ArrayJ Tier1::minimum_images(DeviceJ * device, ArrayJ * src0, ArrayJ * src1, Arr
     return ArrayJ{cle::tier1::minimum_images_func(device->get(), src0->get(), src1->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
-ArrayJ Tier1::minimum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::minimum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::minimum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::minimum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::minimum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::minimum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::minimum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::minimum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::minimum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::minimum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::minimum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::minimum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
 ArrayJ Tier1::mode_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z)
@@ -508,6 +593,16 @@ ArrayJ Tier1::power_images(DeviceJ * device, ArrayJ * src0, ArrayJ * src1, Array
 ArrayJ Tier1::range(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int start_x, int stop_x, int step_x, int start_y, int stop_y, int step_y, int start_z, int stop_z, int step_z)
 {
     return ArrayJ{cle::tier1::range_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), start_x, stop_x, step_x, start_y, stop_y, step_y, start_z, stop_z, step_z)};
+}
+
+ArrayJ Tier1::gather(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int start_x, int stop_x, int step_x, int start_y, int stop_y, int step_y, int start_z, int stop_z, int step_z)
+{
+    return ArrayJ{cle::tier1::gather_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), start_x, stop_x, step_x, start_y, stop_y, step_y, start_z, stop_z, step_z)};
+}
+
+ArrayJ Tier1::scatter(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int start_x, int stop_x, int step_x, int start_y, int stop_y, int step_y, int start_z, int stop_z, int step_z)
+{
+    return ArrayJ{cle::tier1::scatter_func(device->get(), src->get(), dst->get(), start_x, stop_x, step_x, start_y, stop_y, step_y, start_z, stop_z, step_z)};
 }
 
 ArrayJ Tier1::read_values_from_positions(DeviceJ * device, ArrayJ * src, ArrayJ * list, ArrayJ * dst)
@@ -660,9 +755,34 @@ ArrayJ Tier1::square_root(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
     return ArrayJ{cle::tier1::square_root_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
-ArrayJ Tier1::std_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::std_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int ddof, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::std_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::std_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), ddof, keep_dims)};
+}
+
+ArrayJ Tier1::std_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int ddof, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::std_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), ddof, keep_dims)};
+}
+
+ArrayJ Tier1::std_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int ddof, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::std_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), ddof, keep_dims)};
+}
+
+ArrayJ Tier1::variance_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int ddof, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::variance_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), ddof, keep_dims)};
+}
+
+ArrayJ Tier1::variance_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int ddof, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::variance_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), ddof, keep_dims)};
+}
+
+ArrayJ Tier1::variance_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int ddof, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::variance_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), ddof, keep_dims)};
 }
 
 ArrayJ Tier1::subtract_image_from_scalar(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float scalar)
@@ -675,19 +795,34 @@ ArrayJ Tier1::sum_reduction_x(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int 
     return ArrayJ{cle::tier1::sum_reduction_x_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), blocksize)};
 }
 
-ArrayJ Tier1::sum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::sum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::sum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::sum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::sum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::sum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::sum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::sum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::sum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::sum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::sum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::sum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
+}
+
+ArrayJ Tier1::product_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::product_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
+}
+
+ArrayJ Tier1::product_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::product_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
+}
+
+ArrayJ Tier1::product_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
+{
+    return ArrayJ{cle::tier1::product_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
 ArrayJ Tier1::transpose_xy(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
@@ -730,34 +865,34 @@ ArrayJ Tier1::write_values_to_positions(DeviceJ * device, ArrayJ * src, ArrayJ *
     return ArrayJ{cle::tier1::write_values_to_positions_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
-ArrayJ Tier1::x_position_of_maximum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::x_position_of_maximum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::x_position_of_maximum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::x_position_of_maximum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::x_position_of_minimum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::x_position_of_minimum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::x_position_of_minimum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::x_position_of_minimum_x_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::y_position_of_maximum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::y_position_of_maximum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::y_position_of_maximum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::y_position_of_maximum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::y_position_of_minimum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::y_position_of_minimum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::y_position_of_minimum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::y_position_of_minimum_y_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::z_position_of_maximum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::z_position_of_maximum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::z_position_of_maximum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::z_position_of_maximum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
-ArrayJ Tier1::z_position_of_minimum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+ArrayJ Tier1::z_position_of_minimum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims)
 {
-    return ArrayJ{cle::tier1::z_position_of_minimum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+    return ArrayJ{cle::tier1::z_position_of_minimum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
 ArrayJ Tier1::z_position_projection(DeviceJ * device, ArrayJ * src, ArrayJ * position, ArrayJ * dst)
@@ -793,5 +928,75 @@ ArrayJ Tier1::standard_deviation_of_touching_neighbors(DeviceJ * device, ArrayJ 
 ArrayJ Tier1::mode_of_touching_neighbors(DeviceJ * device, ArrayJ * vector, ArrayJ * matrix, ArrayJ * dst)
 {
     return ArrayJ{cle::tier1::mode_of_touching_neighbors_func(device->get(), vector->get(), matrix->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::ceil(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::ceil_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::floor(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::floor_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::round(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::round_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::truncate(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier1::truncate_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier1::minimum_distance_touching_neighbors(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * src_touch_matrix, ArrayJ * dst_index_list)
+{
+    return ArrayJ{cle::tier1::minimum_distance_touching_neighbors_func(device->get(), src_distance_matrix->get(), src_touch_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get())};
+}
+
+ArrayJ Tier1::maximum_distance_touching_neighbors(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * src_touch_matrix, ArrayJ * dst_index_list)
+{
+    return ArrayJ{cle::tier1::maximum_distance_touching_neighbors_func(device->get(), src_distance_matrix->get(), src_touch_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get())};
+}
+
+ArrayJ Tier1::mean_distance_touching_neighbors(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * src_touch_matrix, ArrayJ * dst_index_list)
+{
+    return ArrayJ{cle::tier1::mean_distance_touching_neighbors_func(device->get(), src_distance_matrix->get(), src_touch_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get())};
+}
+
+ArrayJ Tier1::average_distance_touching_neighbors(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * src_touch_matrix, ArrayJ * dst_index_list)
+{
+    return ArrayJ{cle::tier1::average_distance_touching_neighbors_func(device->get(), src_distance_matrix->get(), src_touch_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get())};
+}
+
+ArrayJ Tier1::mean_distance_n_nearest_neighbors(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * dst_index_list, int n)
+{
+    return ArrayJ{cle::tier1::mean_distance_n_nearest_neighbors_func(device->get(), src_distance_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get(), n)};
+}
+
+ArrayJ Tier1::maximum_distance_n_nearest_neighbors(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * dst_index_list, int n)
+{
+    return ArrayJ{cle::tier1::maximum_distance_n_nearest_neighbors_func(device->get(), src_distance_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get(), n)};
+}
+
+ArrayJ Tier1::mean_distance_n_farthest_neighbors(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * dst_index_list, int n)
+{
+    return ArrayJ{cle::tier1::mean_distance_n_farthest_neighbors_func(device->get(), src_distance_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get(), n)};
+}
+
+ArrayJ Tier1::average_distance_of_n_nearest_distances(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * dst_index_list, int n)
+{
+    return ArrayJ{cle::tier1::average_distance_of_n_nearest_distances_func(device->get(), src_distance_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get(), n)};
+}
+
+ArrayJ Tier1::maximum_distance_of_n_shortest_distances(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * dst_index_list, int n)
+{
+    return ArrayJ{cle::tier1::maximum_distance_of_n_shortest_distances_func(device->get(), src_distance_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get(), n)};
+}
+
+ArrayJ Tier1::average_distance_of_n_far_off_distances(DeviceJ * device, ArrayJ * src_distance_matrix, ArrayJ * dst_index_list, int n)
+{
+    return ArrayJ{cle::tier1::average_distance_of_n_far_off_distances_func(device->get(), src_distance_matrix->get(), dst_index_list == nullptr ? nullptr : dst_index_list->get(), n)};
 }
 

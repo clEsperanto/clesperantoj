@@ -55,3 +55,13 @@ ArrayJ Tier5::normalize(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float low_
     return ArrayJ{cle::tier5::normalize_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), low_percentile, high_percentile)};
 }
 
+ArrayJ Tier5::standard_deviation_partial_touching_area_matrix(DeviceJ * device, ArrayJ * src_label, ArrayJ * dst_vector)
+{
+    return ArrayJ{cle::tier5::standard_deviation_partial_touching_area_matrix_func(device->get(), src_label->get(), dst_vector == nullptr ? nullptr : dst_vector->get())};
+}
+
+ArrayJ Tier5::standard_deviation_touch_portion(DeviceJ * device, ArrayJ * src_label, ArrayJ * dst_vector)
+{
+    return ArrayJ{cle::tier5::standard_deviation_touch_portion_func(device->get(), src_label->get(), dst_vector == nullptr ? nullptr : dst_vector->get())};
+}
+

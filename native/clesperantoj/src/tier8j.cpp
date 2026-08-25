@@ -35,3 +35,13 @@ ArrayJ Tier8::deconvolve_fft(DeviceJ * device, ArrayJ * src, ArrayJ * psf, Array
     return ArrayJ{cle::tier8::deconvolve_fft_func(device->get(), src->get(), psf->get(), normalization == nullptr ? nullptr : normalization->get(), dst == nullptr ? nullptr : dst->get(), iteration, regularization)};
 }
 
+ArrayJ Tier8::make_isotropic(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float current_spacing_x, float current_spacing_y, float current_spacing_z, float target_spacing, bool interpolate)
+{
+    return ArrayJ{cle::tier8::make_isotropic_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), current_spacing_x, current_spacing_y, current_spacing_z, target_spacing, interpolate)};
+}
+
+ArrayJ Tier8::make_anisotropic(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float current_spacing, float target_spacing_x, float target_spacing_y, float target_spacing_z, bool interpolate)
+{
+    return ArrayJ{cle::tier8::make_anisotropic_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), current_spacing, target_spacing_x, target_spacing_y, target_spacing_z, interpolate)};
+}
+

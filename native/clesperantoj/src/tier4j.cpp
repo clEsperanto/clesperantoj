@@ -30,6 +30,21 @@ ArrayJ Tier4::threshold_otsu(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
     return ArrayJ{cle::tier4::threshold_otsu_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
+ArrayJ Tier4::threshold_yen(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier4::threshold_yen_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier4::threshold_mean(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier4::threshold_mean_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
+}
+
+ArrayJ Tier4::parametric_map(DeviceJ * device, ArrayJ * labels, StatisticsMap properties, ArrayJ * dst, std::string property)
+{
+    return ArrayJ{cle::tier4::parametric_map_func(device->get(), labels->get(), properties, dst == nullptr ? nullptr : dst->get(), property)};
+}
+
 ArrayJ Tier4::mean_intensity_map(DeviceJ * device, ArrayJ * src, ArrayJ * labels, ArrayJ * dst)
 {
     return ArrayJ{cle::tier4::mean_intensity_map_func(device->get(), src->get(), labels->get(), dst == nullptr ? nullptr : dst->get())};
@@ -52,7 +67,7 @@ ArrayJ Tier4::label_pixel_count_map(DeviceJ * device, ArrayJ * src, ArrayJ * dst
 
 ArrayJ Tier4::centroids_of_labels(DeviceJ * device, ArrayJ * label_image, ArrayJ * centroids_coordinates, bool include_background)
 {
-    return ArrayJ{cle::tier4::centroids_of_labels_func(device->get(), label_image->get(), centroids_coordinates->get(), include_background)};
+    return ArrayJ{cle::tier4::centroids_of_labels_func(device->get(), label_image->get(), centroids_coordinates == nullptr ? nullptr : centroids_coordinates->get(), include_background)};
 }
 
 ArrayJ Tier4::remove_labels_with_map_values_out_of_range(DeviceJ * device, ArrayJ * src, ArrayJ * values, ArrayJ * dst, float min_value, float max_value)
@@ -143,5 +158,25 @@ ArrayJ Tier4::standard_deviation_of_touching_neighbors_map(DeviceJ * device, Arr
 ArrayJ Tier4::mode_of_touching_neighbors_map(DeviceJ * device, ArrayJ * map, ArrayJ * labels, ArrayJ * dst, int radius, bool ignore_background)
 {
     return ArrayJ{cle::tier4::mode_of_touching_neighbors_map_func(device->get(), map->get(), labels->get(), dst == nullptr ? nullptr : dst->get(), radius, ignore_background)};
+}
+
+float Tier4::standard_deviation_of_all_pixels(DeviceJ * device, ArrayJ * src, int ddof)
+{
+    return cle::tier4::standard_deviation_of_all_pixels_func(device->get(), src->get(), ddof);
+}
+
+float Tier4::variance_of_all_pixels(DeviceJ * device, ArrayJ * src, int ddof)
+{
+    return cle::tier4::variance_of_all_pixels_func(device->get(), src->get(), ddof);
+}
+
+ArrayJ Tier4::generate_partial_touching_area_matrix(DeviceJ * device, ArrayJ * src_label, ArrayJ * dst_matrix)
+{
+    return ArrayJ{cle::tier4::generate_partial_touching_area_matrix_func(device->get(), src_label->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get())};
+}
+
+ArrayJ Tier4::generate_touch_portion_matrix(DeviceJ * device, ArrayJ * src_label, ArrayJ * dst_matrix)
+{
+    return ArrayJ{cle::tier4::generate_touch_portion_matrix_func(device->get(), src_label->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get())};
 }
 

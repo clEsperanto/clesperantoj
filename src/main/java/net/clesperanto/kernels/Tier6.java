@@ -25,7 +25,7 @@ public class Tier6 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input label image to dilate.
 	 * @param output ({@link ArrayJ}) - Output label image. (default: None)
-	 * @param radius (int) - Dilation (default: 2)
+	 * @param radius (int) - Dilation radius. (default: 2)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
@@ -43,7 +43,7 @@ public class Tier6 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input label image.
 	 * @param output ({@link ArrayJ}) - Output label image. (default: None)
-	 * @param radius (int) - Erosion (default: 1)
+	 * @param radius (int) - Erosion radius. (default: 1)
 	 * @param relabel (boolean) - Relabel the image, e.g., if objects disappear or split. (default: False)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -80,7 +80,7 @@ public class Tier6 {
 	 * The resulting label map is written to the output.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input binary image.
-	 * @param mask ({@link ArrayJ}) - Input
+	 * @param mask ({@link ArrayJ}) - Input mask.
 	 * @param output ({@link ArrayJ}) - Output label image. (default: None)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_maskedVoronoiLabeling">reference_maskedVoronoiLabeling</a>
