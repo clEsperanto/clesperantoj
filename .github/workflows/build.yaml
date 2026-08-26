@@ -51,7 +51,7 @@ jobs:
         uses: ilammy/msvc-dev-cmd@v1
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           java-version: "11"
           distribution: adopt
@@ -132,7 +132,7 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: Set up JDK 8
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           java-version: "8"
           distribution: zulu
@@ -167,6 +167,9 @@ jobs:
           mv net/clesperanto/* libs/  
           echo "CLIC_LIBS_PATH=$(pwd)/libs" >> $GITHUB_ENV 
         shell: bash -l {0}
+
+      - name: Install POCL (CPU OpenCL device)
+        run: brew install pocl
 
       - name: Set up CI environment
         run: .github/setup.sh
