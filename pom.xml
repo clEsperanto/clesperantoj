@@ -20,6 +20,8 @@
 		<!-- NB: Deploy releases to the SciJava Maven repository. -->
 		<releaseProfiles>sign,deploy-to-scijava</releaseProfiles>
         <clic.version>0.24.0</clic.version>
+        <!-- C++ backend for CLIc: OPENCL (default), CUDA, or METAL. Override with -Dclic.backend=CUDA -->
+        <clic.backend>OPENCL</clic.backend>
 	</properties>
 
 	<name>clesperantoj</name>
@@ -272,6 +274,9 @@
 						<configuration>
 							<executable>bash</executable>
 							<commandlineArgs>${project.basedir}/native/cppbuild.sh</commandlineArgs>
+							<environmentVariables>
+								<CLE_BACKEND>${clic.backend}</CLE_BACKEND>
+							</environmentVariables>
 							<workingDirectory>${project.basedir}/native</workingDirectory>
 						</configuration>
 					</execution>

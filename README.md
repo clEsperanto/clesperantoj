@@ -7,8 +7,8 @@
 
 clEsperantoJ is the Java library of [clEsperanto] - a multi-language framework for GPU-accelerated image processing.
 It relies on a familly of [OpenCL kernels] originated from [CLIJ], and rely on the C++ [CLIc] library as a processing backend.  
-  
-Please note this project is in alpha stages.
+
+Current release only concerne OpenCL backends. CUDA and Metal backends requires rebuild from sources.
 
 ## Install
 

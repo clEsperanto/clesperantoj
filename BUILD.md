@@ -43,7 +43,7 @@ For NVIDIA, we advise to install the [CUDAToolKit](https://developer.nvidia.com/
 ## PATH
 
 To make the above installed programs work, you need to add them to your path, e.g. on Windows like this:
-```
+```bash
 C:\programs\apache-maven-3.9.9\bin
 C:\Program Files\Git\bin
 C:\Program Files\CMake\bin
@@ -52,17 +52,27 @@ C:\Program Files\CMake\bin
 ### Build clesperantoJ
 
 In a commmand prompt (on Windows "x64 Native Tools Command Prompt"), start by git clone the repository and move inside the repo
-```
+```bash
 git clone https://github.com/clEsperanto/clesperantoj_prototype.git
 cd clesperantoj_prototype
 ```
 You can then use Maven to build the project
-```
+```bash
 mvn
 ```
 This should start the build of the source and generate the various `jar` and classes in the `target` folder.
 
 WARNING: for windows users, you may need to rely on the x64 Native Tools Command Prompt for VS 2019 (64 bit!) to run the build.
+
+### Backends
+
+clesperantoJ is build with OpenCL by default, and can be build for CUDA or METAL with the option `clic.backend`
+
+```bash
+mvn install                          # defaults to OPENCL
+mvn -Dclic.backend=CUDA install      # CUDA backend
+mvn -Dclic.backend=METAL install     # METAL backend
+```
 
 
 
