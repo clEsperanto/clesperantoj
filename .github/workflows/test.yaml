@@ -22,6 +22,7 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: 'zulu'
+          architecture: 'x64'
 
       - name: Install POCL (CPU OpenCL device)
         run: brew install pocl
