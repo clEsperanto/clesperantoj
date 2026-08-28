@@ -17,15 +17,24 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.1
       
+      - name: Cache CMake build
+        uses: actions/cache@v4
+        with:
+          path: native/clesperantoj/cppbuild
+          key: cmake-${{ runner.os }}-${{ hashFiles('native/clesperantoj/CMakeLists.txt', 'native/clesperantoj/clic/CMakeLists.txt', 'pom.xml') }}
+          restore-keys: |
+            cmake-${{ runner.os }}-
+
       - name: Setup java
         uses: actions/setup-java@v6
         with:
           java-version: ${{ matrix.java }}
           distribution: 'zulu'
           architecture: 'x64'
+          cache: maven
 
       - name: Install POCL (CPU OpenCL device)
         run: brew install pocl
 
       - name: Execute the tests
-        run: mvn clean test -X
+        run: mvn clean test
