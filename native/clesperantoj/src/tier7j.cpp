@@ -65,3 +65,13 @@ ArrayJ Tier7::voronoi_otsu_labeling(DeviceJ * device, ArrayJ * src, ArrayJ * dst
     return ArrayJ{cle::tier7::voronoi_otsu_labeling_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), spot_sigma, outline_sigma)};
 }
 
+std::unordered_map<std::string, std::vector<float>> Tier7::labels_neighbors_statistics(DeviceJ * device, ArrayJ * label, std::vector<int> proximal_distances, std::vector<int> nearest_neighbor_ns, std::vector<int> dilation_radii, bool include_background)
+{
+    return cle::tier7::labels_neighbors_statistics_func(device->get(), label->get(), proximal_distances, nearest_neighbor_ns, dilation_radii, include_background);
+}
+
+std::unordered_map<std::string, std::vector<float>> Tier7::statistics_of_labelled_neighbors(DeviceJ * device, ArrayJ * label, std::vector<int> proximal_distances, std::vector<int> nearest_neighbor_ns, std::vector<int> dilation_radii)
+{
+    return cle::tier7::statistics_of_labelled_neighbors_func(device->get(), label->get(), proximal_distances, nearest_neighbor_ns, dilation_radii);
+}
+

@@ -213,6 +213,37 @@ public class Tier3 {
     }
     
 	/**
+	 * Takes a label map and generates a symmetric (n+1)×(n+1) matrix where each entry [i,j] holds the number of pixels shared on the boundary between label i and label j.
+	 * The result is a symmetric matrix.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_label ({@link ArrayJ}) - Input label image
+	 * @param output_matrix ({@link ArrayJ}) - Output matrix (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ generateTouchingAreaMatrix(DeviceJ device, ArrayJ input_label, ArrayJ output_matrix) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_label, "input_label cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier3.generate_touching_area_matrix(device.getRaw(), input_label.getRaw(), output_matrix == null ? null : output_matrix.getRaw()));
+    }
+    
+	/**
+	 * Takes a label map and generates a symmetric (n+1)×(n+1) matrix where each entry [i,j] holds the number of pixels shared on the boundary between label i and label j.
+	 * The result is a symmetric matrix.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_label ({@link ArrayJ}) - Input label image
+	 * @param output_matrix ({@link ArrayJ}) - Output matrix (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+	@Deprecated
+    public static ArrayJ generateTouchCountMatrix(DeviceJ device, ArrayJ input_label, ArrayJ output_matrix) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_label, "input_label cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier3.generate_touch_count_matrix(device.getRaw(), input_label.getRaw(), output_matrix == null ? null : output_matrix.getRaw()));
+    }
+    
+	/**
 	 * Determines the histogram of a given image.
 	 * The histogram image has dimensions number_of_bins × 1 × 1 (a 3D image with height = 1 and depth = 1).
 	 * Histogram bins contain the number of pixels with intensity in the corresponding bin.
@@ -269,7 +300,7 @@ public class Tier3 {
 	 * g.
 	 * from connected components analysis, into an image where every column contains d entries (with d = dimensionality of the original image) holding the coordinates of maxima/minima.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param label ({@link ArrayJ}) - Input
+	 * @param label ({@link ArrayJ}) - Input label image.
 	 * @param dspointlistt ({@link ArrayJ}) - Output coordinate list. (default: None)
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_labelledSpotsToPointList">reference_labelledSpotsToPointList</a>
@@ -329,7 +360,7 @@ public class Tier3 {
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output contour; can also be used to provide initialization. (default: None)
 	 * @param num_iter (int) - Number of iterations. (default: 100)
-	 * @param smoothing (int) - Number of (default: 1)
+	 * @param smoothing (int) - Number of smoothing iterations. (default: 1)
 	 * @param lambda1 (float) - Lambda1. (default: 1)
 	 * @param lambda2 (float) - Lambda2. (default: 1)
 	 * @return {@link ArrayJ}
@@ -346,12 +377,29 @@ public class Tier3 {
 	 * If not provided, the intensity image defaults to the label image.
 	 * If not provided, the label image defaults to a single label covering the entire image.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param label ({@link ArrayJ}) - Label image to compute the statistics. (default: None)
+	 * @param intensity ({@link ArrayJ}) - Intensity image. (default: None)
+	 * @param include_background (boolean) - Computed the statistics for the background (label 0). (default: False)
+	 * @return HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static HashMap<String, ArrayList<Float>> labelsStatistics(DeviceJ device, ArrayJ label, ArrayJ intensity, boolean include_background) {
+        Objects.requireNonNull(device, "device cannot be null");
+        return Utils.toHashMap(net.clesperanto._internals.kernelj.Tier3.labels_statistics(device.getRaw(), label == null ? null : label.getRaw(), intensity == null ? null : intensity.getRaw(), include_background));
+    }
+    
+	/**
+	 * Computes the bounding box, area (in pixels/voxels), minimum intensity, maximum intensity, average intensity, standard deviation of the intensity, and shape descriptors of labelled objects in a label image and its corresponding intensity image.
+	 * If not provided, the intensity image defaults to the label image.
+	 * If not provided, the label image defaults to a single label covering the entire image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param intensity ({@link ArrayJ}) - Intensity image. (default: None)
 	 * @param label ({@link ArrayJ}) - Label image to compute the statistics. (default: None)
-	 * @return StatisticsMap
+	 * @return HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_statisticsOfLabelledPixels">reference_statisticsOfLabelledPixels</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
+	@Deprecated
     public static HashMap<String, ArrayList<Float>> statisticsOfLabelledPixels(DeviceJ device, ArrayJ intensity, ArrayJ label) {
         Objects.requireNonNull(device, "device cannot be null");
         return Utils.toHashMap(net.clesperanto._internals.kernelj.Tier3.statistics_of_labelled_pixels(device.getRaw(), intensity == null ? null : intensity.getRaw(), label == null ? null : label.getRaw()));
@@ -364,10 +412,11 @@ public class Tier3 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param intensity ({@link ArrayJ}) - Intensity image. (default: None)
 	 * @param label ({@link ArrayJ}) - Label image to compute the statistics. (default: None)
-	 * @return StatisticsMap
+	 * @return HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_statisticsOfBackgroundAndLabelledPixels">reference_statisticsOfBackgroundAndLabelledPixels</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
+	@Deprecated
     public static HashMap<String, ArrayList<Float>> statisticsOfBackgroundAndLabelledPixels(DeviceJ device, ArrayJ intensity, ArrayJ label) {
         Objects.requireNonNull(device, "device cannot be null");
         return Utils.toHashMap(net.clesperanto._internals.kernelj.Tier3.statistics_of_background_and_labelled_pixels(device.getRaw(), intensity == null ? null : intensity.getRaw(), label == null ? null : label.getRaw()));
@@ -424,12 +473,12 @@ public class Tier3 {
 	 * @param width (int) - Width of the generated image. (default: 256)
 	 * @param height (int) - Height of the generated image. (default: 256)
 	 * @param depth (int) - Depth of the generated image. (default: 1)
-	 * @param delta_x (float) - Spacing between pixels in x. (default: 1.0)
-	 * @param delta_y (float) - Spacing between pixels in y. (default: 1.0)
-	 * @param delta_z (float) - Spacing between pixels in z. (default: 1.0)
-	 * @param sigma_x (float) - Standard deviation of the Gaussian noise in x. (default: 1.0)
-	 * @param sigma_y (float) - Standard deviation of the Gaussian noise in y. (default: 1.0)
-	 * @param sigma_z (float) - Standard deviation of the Gaussian noise in z. (default: 1.0)
+	 * @param delta_x (float) - Spacing between pixels in x. (default: 10.0)
+	 * @param delta_y (float) - Spacing between pixels in y. (default: 10.0)
+	 * @param delta_z (float) - Spacing between pixels in z. (default: 0.0)
+	 * @param sigma_x (float) - Standard deviation of the Gaussian noise in x. (default: 3.0)
+	 * @param sigma_y (float) - Standard deviation of the Gaussian noise in y. (default: 3.0)
+	 * @param sigma_z (float) - Standard deviation of the Gaussian noise in z. (default: 0.0)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
@@ -441,8 +490,24 @@ public class Tier3 {
 	/**
 	 * Reads values from a parametric map using its corresponding labels and return it as a vector of values.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param label ({@link ArrayJ}) - Input
-	 * @param map ({@link ArrayJ}) - Input
+	 * @param map ({@link ArrayJ}) - Input map image.
+	 * @param label ({@link ArrayJ}) - Input label image.
+	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ readMapValues(DeviceJ device, ArrayJ map, ArrayJ label, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(map, "map cannot be null");
+		Objects.requireNonNull(label, "label cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier3.read_map_values(device.getRaw(), map.getRaw(), label.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Reads values from a parametric map using its corresponding labels and return it as a vector of values.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param label ({@link ArrayJ}) - Input label image.
+	 * @param map ({@link ArrayJ}) - Input map image.
 	 * @param output ({@link ArrayJ}) - Output result image. (default: None)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.

@@ -117,8 +117,8 @@ public class Tier2 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output image. (default: None)
-	 * @param min_intensity (float) - New lower limit of the intensity range. (default: None)
-	 * @param max_intensity (float) - New upper limit of the intensity range. (default: None)
+	 * @param min_intensity (float) - New lower limit of the intensity range. (default: float('nan'))
+	 * @param max_intensity (float) - New upper limit of the intensity range. (default: float('nan'))
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://numpy.org/doc/stable/reference/generated/numpy.clip.html">numpy.clip.html</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -220,6 +220,24 @@ public class Tier2 {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.binary_closing(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), radius_x, radius_y, radius_z, connectivity));
+    }
+    
+	/**
+	 * Concatenates two arrays along a specified axis (0:x, 1:y, 2:z).
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input0 ({@link ArrayJ}) - First input array.
+	 * @param input1 ({@link ArrayJ}) - Second input array.
+	 * @param output ({@link ArrayJ}) - Output result array. (default: None)
+	 * @param axis (int) - Axis along which to concatenate (0:x, 1:y, 2:z). (default: 0)
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_combineHorizontally">reference_combineHorizontally</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ concatenate(DeviceJ device, ArrayJ input0, ArrayJ input1, ArrayJ output, int axis) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input0, "input0 cannot be null");
+		Objects.requireNonNull(input1, "input1 cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.concatenate(device.getRaw(), input0.getRaw(), input1.getRaw(), output == null ? null : output.getRaw(), axis));
     }
     
 	/**
@@ -556,7 +574,7 @@ public class Tier2 {
 	 * Determines the minimum intensity in a masked image, but only over pixels that have nonzero values in a separate mask image.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
-	 * @param mask ({@link ArrayJ}) - Input
+	 * @param mask ({@link ArrayJ}) - Input mask.
 	 * @return float
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimumOfMaskedPixels">reference_minimumOfMaskedPixels</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -888,6 +906,19 @@ public class Tier2 {
     }
     
 	/**
+	 * Determines the product of all pixels in a given image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process. (default: None)
+	 * @return float
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static float productOfAllPixels(DeviceJ device, ArrayJ input) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return net.clesperanto._internals.kernelj.Tier2.product_of_all_pixels(device.getRaw(), input == null ? null : input.getRaw());
+    }
+    
+	/**
 	 * Applies a top-hat filter for background subtraction to the input image.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - The input image where the background is subtracted from.
@@ -1016,6 +1047,82 @@ public class Tier2 {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input_matrix, "input_matrix cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.generate_proximal_neighbors_matrix(device.getRaw(), input_matrix.getRaw(), output_matrix == null ? null : output_matrix.getRaw(), min_distance, max_distance));
+    }
+    
+	/**
+	 * Generates a touch matrix from a matrix describing how much labels touch by selecting neighbors whose touch portion lies strictly within a specified range.
+	 * Minimum and maximum range boundaries are excluded.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_matrix ({@link ArrayJ}) - Input matrix containing touching portions between labels.
+	 * @param output_matrix ({@link ArrayJ}) - Output touch matrix. (default: None)
+	 * @param min_distance (float) - Lower excluded bound of the touching-portion range. (default: 0)
+	 * @param max_distance (float) - Upper excluded bound of the touching-portion range. (default: 1.1)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ generatePartialTouchingAreaMatrixWithinRange(DeviceJ device, ArrayJ input_matrix, ArrayJ output_matrix, float min_distance, float max_distance) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_matrix, "input_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.generate_partial_touching_area_matrix_within_range(device.getRaw(), input_matrix.getRaw(), output_matrix == null ? null : output_matrix.getRaw(), min_distance, max_distance));
+    }
+    
+	/**
+	 * Generates a touch matrix from a matrix describing how much labels touch by selecting neighbors whose touch portion lies strictly within a specified range.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_matrix ({@link ArrayJ}) - Input matrix containing touching portions between labels.
+	 * @param output_matrix ({@link ArrayJ}) - Output touch matrix. (default: None)
+	 * @param min_distance (float) - Lower excluded bound of the touching-portion range. (default: 0)
+	 * @param max_distance (float) - Upper excluded bound of the touching-portion range. (default: 1.1)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+	@Deprecated
+    public static ArrayJ generateTouchPortionWithinRangeNeighborsMatrix(DeviceJ device, ArrayJ input_matrix, ArrayJ output_matrix, float min_distance, float max_distance) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_matrix, "input_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.generate_touch_portion_within_range_neighbors_matrix(device.getRaw(), input_matrix.getRaw(), output_matrix == null ? null : output_matrix.getRaw(), min_distance, max_distance));
+    }
+    
+	/**
+	 * Transforms a matrix into a symmetric matrix by resolving conflicting values (X,Y) and (Y,X) using their maximum.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_matrix ({@link ArrayJ}) - Input matrix.
+	 * @param output_matrix ({@link ArrayJ}) - Output symmetric matrix. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ symmetricMaximumMatrix(DeviceJ device, ArrayJ input_matrix, ArrayJ output_matrix) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_matrix, "input_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.symmetric_maximum_matrix(device.getRaw(), input_matrix.getRaw(), output_matrix == null ? null : output_matrix.getRaw()));
+    }
+    
+	/**
+	 * Transforms a matrix into a symmetric matrix by resolving conflicting values (X,Y) and (Y,X) using their minimum.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_matrix ({@link ArrayJ}) - Input matrix.
+	 * @param output_matrix ({@link ArrayJ}) - Output symmetric matrix. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ symmetricMinimumMatrix(DeviceJ device, ArrayJ input_matrix, ArrayJ output_matrix) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_matrix, "input_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.symmetric_minimum_matrix(device.getRaw(), input_matrix.getRaw(), output_matrix == null ? null : output_matrix.getRaw()));
+    }
+    
+	/**
+	 * Transforms a matrix into a symmetric matrix by resolving conflicting values (X,Y) and (Y,X) using their mean.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_matrix ({@link ArrayJ}) - Input matrix.
+	 * @param output_matrix ({@link ArrayJ}) - Output symmetric matrix. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ symmetricMeanMatrix(DeviceJ device, ArrayJ input_matrix, ArrayJ output_matrix) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_matrix, "input_matrix cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.symmetric_mean_matrix(device.getRaw(), input_matrix.getRaw(), output_matrix == null ? null : output_matrix.getRaw()));
     }
     
 }

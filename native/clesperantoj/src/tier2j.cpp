@@ -60,6 +60,11 @@ ArrayJ Tier2::binary_closing(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float
     return ArrayJ{cle::tier2::binary_closing_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), radius_x, radius_y, radius_z, connectivity)};
 }
 
+ArrayJ Tier2::concatenate(DeviceJ * device, ArrayJ * src0, ArrayJ * src1, ArrayJ * dst, int axis)
+{
+    return ArrayJ{cle::tier2::concatenate_func(device->get(), src0->get(), src1->get(), dst == nullptr ? nullptr : dst->get(), axis)};
+}
+
 ArrayJ Tier2::concatenate_along_x(DeviceJ * device, ArrayJ * src0, ArrayJ * src1, ArrayJ * dst)
 {
     return ArrayJ{cle::tier2::concatenate_along_x_func(device->get(), src0->get(), src1->get(), dst == nullptr ? nullptr : dst->get())};
@@ -250,6 +255,11 @@ float Tier2::sum_of_all_pixels(DeviceJ * device, ArrayJ * src)
     return cle::tier2::sum_of_all_pixels_func(device->get(), src == nullptr ? nullptr : src->get());
 }
 
+float Tier2::product_of_all_pixels(DeviceJ * device, ArrayJ * src)
+{
+    return cle::tier2::product_of_all_pixels_func(device->get(), src == nullptr ? nullptr : src->get());
+}
+
 ArrayJ Tier2::top_hat_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z)
 {
     return ArrayJ{cle::tier2::top_hat_box_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), radius_x, radius_y, radius_z)};
@@ -283,5 +293,30 @@ std::vector<ArrayJ> Tier2::hessian_gaussian_eigenvalues(DeviceJ * device, ArrayJ
 ArrayJ Tier2::generate_proximal_neighbors_matrix(DeviceJ * device, ArrayJ * src_matrix, ArrayJ * dst_matrix, float min_distance, float max_distance)
 {
     return ArrayJ{cle::tier2::generate_proximal_neighbors_matrix_func(device->get(), src_matrix->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get(), min_distance, max_distance)};
+}
+
+ArrayJ Tier2::generate_partial_touching_area_matrix_within_range(DeviceJ * device, ArrayJ * src_matrix, ArrayJ * dst_matrix, float min_distance, float max_distance)
+{
+    return ArrayJ{cle::tier2::generate_partial_touching_area_matrix_within_range_func(device->get(), src_matrix->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get(), min_distance, max_distance)};
+}
+
+ArrayJ Tier2::generate_touch_portion_within_range_neighbors_matrix(DeviceJ * device, ArrayJ * src_matrix, ArrayJ * dst_matrix, float min_distance, float max_distance)
+{
+    return ArrayJ{cle::tier2::generate_touch_portion_within_range_neighbors_matrix_func(device->get(), src_matrix->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get(), min_distance, max_distance)};
+}
+
+ArrayJ Tier2::symmetric_maximum_matrix(DeviceJ * device, ArrayJ * src_matrix, ArrayJ * dst_matrix)
+{
+    return ArrayJ{cle::tier2::symmetric_maximum_matrix_func(device->get(), src_matrix->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get())};
+}
+
+ArrayJ Tier2::symmetric_minimum_matrix(DeviceJ * device, ArrayJ * src_matrix, ArrayJ * dst_matrix)
+{
+    return ArrayJ{cle::tier2::symmetric_minimum_matrix_func(device->get(), src_matrix->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get())};
+}
+
+ArrayJ Tier2::symmetric_mean_matrix(DeviceJ * device, ArrayJ * src_matrix, ArrayJ * dst_matrix)
+{
+    return ArrayJ{cle::tier2::symmetric_mean_matrix_func(device->get(), src_matrix->get(), dst_matrix == nullptr ? nullptr : dst_matrix->get())};
 }
 

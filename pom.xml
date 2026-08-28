@@ -11,7 +11,7 @@
 
 	<groupId>net.clesperanto</groupId>
 	<artifactId>clesperantoj</artifactId>
-	<version>0.20.0-SNAPSHOT</version>
+	<version>0.24.0-SNAPSHOT</version>
 
 	<properties>
 		<package-name>net.clesperanto</package-name>
@@ -19,7 +19,9 @@
 		<license.copyrightOwners>Robert Haase, MPI CBG and Stephane Rigaud, Institut Pasteur</license.copyrightOwners>
 		<!-- NB: Deploy releases to the SciJava Maven repository. -->
 		<releaseProfiles>sign,deploy-to-scijava</releaseProfiles>
-        <clic.version>0.20.0</clic.version>
+        <clic.version>0.24.0</clic.version>
+        <!-- C++ backend for CLIc: OPENCL (default), CUDA, or METAL. Override with -Dclic.backend=CUDA -->
+        <clic.backend>OPENCL</clic.backend>
 	</properties>
 
 	<name>clesperantoj</name>
@@ -272,6 +274,9 @@
 						<configuration>
 							<executable>bash</executable>
 							<commandlineArgs>${project.basedir}/native/cppbuild.sh</commandlineArgs>
+							<environmentVariables>
+								<CLE_BACKEND>${clic.backend}</CLE_BACKEND>
+							</environmentVariables>
 							<workingDirectory>${project.basedir}/native</workingDirectory>
 						</configuration>
 					</execution>
@@ -280,7 +285,6 @@
 	        <plugin>
 	       		<groupId>org.codehaus.mojo</groupId>
 	       		<artifactId>build-helper-maven-plugin</artifactId>
-	       		<!-- TODO remove <version>3.3.0</version> -->
 	       		<executions>
 	                <execution>
 	           			<id>add-source</id>
@@ -298,7 +302,6 @@
 	        </plugin>
 			<plugin>
 		    	<artifactId>maven-compiler-plugin</artifactId>
-	       		<!-- TODO remove <version>3.12.1</version> -->
 		    	<configuration>
 		      		<source>1.8</source>
 		      		<target>1.8</target>
@@ -325,7 +328,6 @@
 		    <plugin>
 				<groupId>org.bytedeco</groupId>
 				<artifactId>javacpp</artifactId>
-				<!-- <version>1.5.10</version> -->
     			<version>${javacpp.version}</version>
 				<configuration>
 					<compilerOptions>
@@ -396,7 +398,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-	       		<!-- TODO remove <version>2.22.2</version> -->
 			    <configuration>
 	                <forkCount>1</forkCount>
 	                <reuseForks>false</reuseForks>

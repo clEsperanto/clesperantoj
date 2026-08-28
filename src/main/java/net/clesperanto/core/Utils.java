@@ -69,6 +69,7 @@ import java.util.HashMap;
 
 import net.clesperanto._internals.jclic._StringVector;
 import net.clesperanto._internals.jclic._FloatVector;
+import net.clesperanto._internals.jclic._IntVector;
 import net.clesperanto._internals.jclic._ArrayJVector;
 import net.clesperanto._internals.jclic._FloatVectorMap;
 import net.clesperanto._internals.jclic._UtilsJ;
@@ -85,6 +86,14 @@ public class Utils {
 
 	public static ArrayList<Float> toArrayList(_FloatVector vector) {
 		ArrayList<Float> arr = new ArrayList<Float>((int) vector.size());
+		for (int i = 0; i < vector.size(); i++) {
+			arr.add(vector.get(i));
+		}
+		return arr;
+	}
+
+	public static ArrayList<Integer> toArrayList(_IntVector vector) {
+		ArrayList<Integer> arr = new ArrayList<Integer>((int) vector.size());
 		for (int i = 0; i < vector.size(); i++) {
 			arr.add(vector.get(i));
 		}
@@ -108,7 +117,15 @@ public class Utils {
 		return hashMap;
 	}
 
-	public static _FloatVector toVector(ArrayList<Float> array) {
+	public static _FloatVectorMap toFloatVectorMap(HashMap<String, ArrayList<Float>> hashMap) {
+		_FloatVectorMap map = new _FloatVectorMap();
+		for (String key : hashMap.keySet()) {
+			map.put(key, toFloatVector(hashMap.get(key)));
+		}
+		return map;
+	}
+
+	public static _FloatVector toFloatVector(ArrayList<Float> array) {
 		Float[] floatArray = new Float[array.size()];
 		floatArray = array.toArray(floatArray);
 		_FloatVector vector = new _FloatVector(array.size());
@@ -117,5 +134,16 @@ public class Utils {
 		}
 		return vector;
 	}
+
+	public static _IntVector toIntVector(ArrayList<Integer> array) {
+		Integer[] intArray = new Integer[array.size()];
+		intArray = array.toArray(intArray);
+		_IntVector vector = new _IntVector(array.size());
+		for (int i = 0; i < array.size(); i++) {
+			vector.put(i, intArray[i]);
+		}
+		return vector;
+	}
+
 
 }

@@ -45,7 +45,15 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
+
+      - name: Cache CMake build
+        uses: actions/cache@v4
+        with:
+          path: native/clesperantoj/cppbuild
+          key: cmake-${{ runner.os }}-${{ hashFiles('native/clesperantoj/CMakeLists.txt', 'native/clesperantoj/clic/CMakeLists.txt', 'pom.xml') }}
+          restore-keys: |
+            cmake-${{ runner.os }}-
 
       - name: Install MSVC Dev Cmd
         uses: ilammy/msvc-dev-cmd@v1
@@ -54,7 +62,9 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: "11"
-          distribution: adopt
+          distribution: zulu
+          architecture: 'x64'
+          cache: maven
 
       - name: Install ocl-icd-loader - windows
         if: runner.os == 'Windows'
@@ -91,13 +101,11 @@ jobs:
           mvn clean install -DskipTests
         shell: bash -l {0}
 
-      - name: Run Java class (only possible on MacOS intel)
+      - name: Run Java class
         if: contains(matrix.os, 'macos')
         run: >
-          if [[ $(uname -m) == 'x86_64' ]]; then
-            mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
-            java -cp target/classes:$(cat classpath.txt) net.clesperanto.ClesperantoJ
-          fi
+          mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
+          && java -cp target/classes:$(cat classpath.txt) net.clesperanto.ClesperantoJ
 
       - name: Get Maven Version and Upload Artifact
         shell: bash
@@ -124,18 +132,19 @@ jobs:
 
   build:
     needs: build-os
-    runs-on: macos-13
+    runs-on: macos-14
 
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
 
       - name: Set up JDK 8
         uses: actions/setup-java@v4
         with:
           java-version: "8"
           distribution: zulu
+          architecture: 'x64'
           cache: maven
 
       - name: Download all platform-specific JAR files

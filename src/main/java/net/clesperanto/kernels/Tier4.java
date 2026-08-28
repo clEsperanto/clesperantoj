@@ -87,7 +87,9 @@ public class Tier4 {
     }
     
 	/**
-	 * Binarizes an image using Otsu's threshold method, implemented in scikit-image, using a histogram determined on the GPU to create binary images.
+	 * Binarizes an image using Otsu's threshold method (Otsu et.
+	 * al.
+	 * 1979).
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to threshold.
 	 * @param output ({@link ArrayJ}) - Output binary image. (default: None)
@@ -101,6 +103,63 @@ public class Tier4 {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.threshold_otsu(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Binarizes an image using Yen's threshold method (Yen et.
+	 * al.
+	 * 1995).
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to threshold.
+	 * @param output ({@link ArrayJ}) - Output binary image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://scikit-image.org/docs/dev/api/skimage.filters.html#skimage.filters.threshold_yen">skimage.filters.html#skimage.filters.threshold_yen</a>
+	 * @see <a href="https://ieeexplore.ieee.org/document/366472">366472</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ thresholdYen(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.threshold_yen(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Binarizes an image using the global average intensity in the image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to threshold.
+	 * @param output ({@link ArrayJ}) - Output binary image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ thresholdMean(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.threshold_mean(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
+    }
+    
+	/**
+	 * Takes label map and its corresponding quantifications table and plots the requested property (e.
+	 * g.
+	 * , 'mean_intensity') on to the labels.
+	 * The resulting image is a parametric map of the requested property.
+	 * NOTE: The quantification table can be generated using labels_statistics or labels_neighbors_statistics functions, with the 'include_background' parameter set to 'True'.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param labels ({@link ArrayJ}) - Label image.
+	 * @param properties (HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;) - Statistics properties map (including the background).
+	 * @param output ({@link ArrayJ}) - Output parametric map. (default: None)
+	 * @param property (String) - Name of the property to map. (default: "label")
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_meanIntensityMap">reference_meanIntensityMap</a>
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_pixelCountMap">reference_pixelCountMap</a>
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimumIntensityMap">reference_minimumIntensityMap</a>
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_maximumIntensityMap">reference_maximumIntensityMap</a>
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_standardDeviationIntensityMap">reference_standardDeviationIntensityMap</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ parametricMap(DeviceJ device, ArrayJ labels, HashMap<String, ArrayList<Float>> properties, ArrayJ output, String property) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(labels, "labels cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.parametric_map(device.getRaw(), labels.getRaw(), Utils.toFloatVectorMap(properties), output == null ? null : output.getRaw(), property));
     }
     
 	/**
@@ -178,23 +237,23 @@ public class Tier4 {
 	 * It writes the resulting coordinates into a point list image of dimensions n × d where n is the number of labels and d = 3 is the dimensionality (x, y, z) of the original image.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param label_image ({@link ArrayJ}) - Label image from which the centroids will be determined.
-	 * @param centroids_coordinates ({@link ArrayJ}) - Output list of coordinates where the centroids will be written.
+	 * @param centroids_coordinates ({@link ArrayJ}) - Output list of coordinates. (default: None)
 	 * @param include_background (boolean) - Determines if the background label should be included. (default: False)
 	 * @return {@link ArrayJ}
-	 * @see <a href="https://clij.github.io/clij2-docs/reference_centroidsOfLabels">reference_centroidsOfLabels</a>
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_OfLabels">reference_OfLabels</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
     public static ArrayJ centroidsOfLabels(DeviceJ device, ArrayJ label_image, ArrayJ centroids_coordinates, boolean include_background) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(label_image, "label_image cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.centroids_of_labels(device.getRaw(), label_image.getRaw(), centroids_coordinates.getRaw(), include_background));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.centroids_of_labels(device.getRaw(), label_image.getRaw(), centroids_coordinates == null ? null : centroids_coordinates.getRaw(), include_background));
     }
     
 	/**
 	 * Remove labels with values outside a given value range based on a vector of values associated with the labels.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image where labels will be filtered.
-	 * @param values ({@link ArrayJ}) - Vector of
+	 * @param values ({@link ArrayJ}) - Vector of values associated with the labels.
 	 * @param output ({@link ArrayJ}) - Output image where labels will be written to. (default: None)
 	 * @param min_value (float) - Minimum value to keep. (default: 0)
 	 * @param max_value (float) - Maximum value to keep. (default: 100)
@@ -213,7 +272,7 @@ public class Tier4 {
 	 * Remove labels with values inside a given value range based on a vector of values associated with the labels.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image where labels will be filtered.
-	 * @param values ({@link ArrayJ}) - Vector of
+	 * @param values ({@link ArrayJ}) - Vector of values associated with the labels.
 	 * @param output ({@link ArrayJ}) - Output image where labels will be written to. (default: None)
 	 * @param min_value (float) - Minimum value to keep. (default: 0)
 	 * @param max_value (float) - Maximum value to keep. (default: 100)
@@ -405,7 +464,7 @@ public class Tier4 {
 	 * radius 1 = direct neighbors, radius 2 = neighbors of neighbors, etc.
 	 * ).
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param map ({@link ArrayJ}) - Input parametric
+	 * @param map ({@link ArrayJ}) - Input parametric map image.
 	 * @param labels ({@link ArrayJ}) - Input vector image.
 	 * @param output ({@link ArrayJ}) - Output parametric image. (default: None)
 	 * @param radius (int) - Radius of touching neighbors to consider. (default: 1)
@@ -428,7 +487,7 @@ public class Tier4 {
 	 * radius 1 = direct neighbors, radius 2 = neighbors of neighbors, etc.
 	 * ).
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param map ({@link ArrayJ}) - Input parametric
+	 * @param map ({@link ArrayJ}) - Input parametric map image.
 	 * @param labels ({@link ArrayJ}) - Input label image.
 	 * @param output ({@link ArrayJ}) - Output parametric image. (default: None)
 	 * @param radius (int) - Radius of touching neighbors to consider. (default: 1)
@@ -451,7 +510,7 @@ public class Tier4 {
 	 * radius 1 = direct neighbors, radius 2 = neighbors of neighbors, etc.
 	 * ).
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param map ({@link ArrayJ}) - Input parametric
+	 * @param map ({@link ArrayJ}) - Input parametric map image.
 	 * @param labels ({@link ArrayJ}) - Input label image.
 	 * @param output ({@link ArrayJ}) - Output parametric image. (default: None)
 	 * @param radius (int) - Radius of touching neighbors to consider. (default: 1)
@@ -474,7 +533,7 @@ public class Tier4 {
 	 * radius 1 = direct neighbors, radius 2 = neighbors of neighbors, etc.
 	 * ).
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param map ({@link ArrayJ}) - Input parametric
+	 * @param map ({@link ArrayJ}) - Input parametric map image.
 	 * @param labels ({@link ArrayJ}) - Input label image.
 	 * @param output ({@link ArrayJ}) - Output parametric image. (default: None)
 	 * @param radius (int) - Radius of touching neighbors to consider. (default: 1)
@@ -497,7 +556,7 @@ public class Tier4 {
 	 * radius 1 = direct neighbors, radius 2 = neighbors of neighbors, etc.
 	 * ).
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param map ({@link ArrayJ}) - Input parametric
+	 * @param map ({@link ArrayJ}) - Input parametric map image.
 	 * @param labels ({@link ArrayJ}) - Input label image.
 	 * @param output ({@link ArrayJ}) - Output parametric image. (default: None)
 	 * @param radius (int) - Radius of touching neighbors to consider. (default: 1)
@@ -520,7 +579,7 @@ public class Tier4 {
 	 * radius 1 = direct neighbors, radius 2 = neighbors of neighbors, etc.
 	 * ).
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param map ({@link ArrayJ}) - Input parametric
+	 * @param map ({@link ArrayJ}) - Input parametric map image.
 	 * @param labels ({@link ArrayJ}) - Input label image.
 	 * @param output ({@link ArrayJ}) - Output parametric image. (default: None)
 	 * @param radius (int) - Radius of touching neighbors to consider. (default: 1)
@@ -533,6 +592,69 @@ public class Tier4 {
 		Objects.requireNonNull(map, "map cannot be null");
 		Objects.requireNonNull(labels, "labels cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.mode_of_touching_neighbors_map(device.getRaw(), map.getRaw(), labels.getRaw(), output == null ? null : output.getRaw(), radius, ignore_background));
+    }
+    
+	/**
+	 * Computes the standard deviation of all pixel values in an image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image.
+	 * @param ddof (int) - Delta degrees of freedom. The divisor used is (n - ddof). (default: 0)
+	 * @return float
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static float standardDeviationOfAllPixels(DeviceJ device, ArrayJ input, int ddof) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return net.clesperanto._internals.kernelj.Tier4.standard_deviation_of_all_pixels(device.getRaw(), input.getRaw(), ddof);
+    }
+    
+	/**
+	 * Computes the variance of all pixel values in an image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image.
+	 * @param ddof (int) - Delta degrees of freedom. The divisor used is (n - ddof). (default: 0)
+	 * @return float
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static float varianceOfAllPixels(DeviceJ device, ArrayJ input, int ddof) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return net.clesperanto._internals.kernelj.Tier4.variance_of_all_pixels(device.getRaw(), input.getRaw(), ddof);
+    }
+    
+	/**
+	 * Computes, for each pair of touching labels (X, Y), the ratio of the perimeter of label X that is in contact with label Y.
+	 * Each entry (X, Y) in the output matrix holds the fraction of label X's total perimeter that touches label Y (i.
+	 * e.
+	 * , touching_area(X,Y) / total_perimeter(X)).
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_label ({@link ArrayJ}) - Input label image.
+	 * @param output_matrix ({@link ArrayJ}) - Output matrix of perimeter-contact ratios. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ generatePartialTouchingAreaMatrix(DeviceJ device, ArrayJ input_label, ArrayJ output_matrix) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_label, "input_label cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.generate_partial_touching_area_matrix(device.getRaw(), input_label.getRaw(), output_matrix == null ? null : output_matrix.getRaw()));
+    }
+    
+	/**
+	 * Computes, for each pair of touching labels (X, Y), the ratio of the perimeter of label X that is in contact with label Y.
+	 * Each entry (X, Y) in the output matrix holds the fraction of label X's total perimeter that touches label Y (i.
+	 * e.
+	 * , touching_area(X,Y) / total_perimeter(X)).
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input_label ({@link ArrayJ}) - Input label image.
+	 * @param output_matrix ({@link ArrayJ}) - Output matrix of perimeter-contact ratios. (default: None)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+	@Deprecated
+    public static ArrayJ generateTouchPortionMatrix(DeviceJ device, ArrayJ input_label, ArrayJ output_matrix) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input_label, "input_label cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier4.generate_touch_portion_matrix(device.getRaw(), input_label.getRaw(), output_matrix == null ? null : output_matrix.getRaw()));
     }
     
 }

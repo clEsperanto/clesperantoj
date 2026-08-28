@@ -12,3 +12,11 @@ repos:
     -   id: check-merge-conflict
     -   id: check-symlinks
     -   id: mixed-line-ending
+
+-   repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v18.1.8
+    hooks:
+    -   id: clang-format
+        # Only the hand-written C++ wrapper; excludes fetched/generated CLIc
+        # sources under native/clesperantoj/cppbuild.
+        files: ^native/clesperantoj/(include|src)/.*\.(cpp|hpp)$

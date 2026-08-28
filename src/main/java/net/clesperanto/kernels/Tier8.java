@@ -24,7 +24,7 @@ public class Tier8 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input label image.
 	 * @param output ({@link ArrayJ}) - Output label image. (default: None)
-	 * @param radius (int) - Smoothing (default: 0)
+	 * @param radius (int) - Smoothing radius. (default: 0)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
@@ -40,7 +40,7 @@ public class Tier8 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input label image.
 	 * @param output ({@link ArrayJ}) - Output label image. (default: None)
-	 * @param radius (int) - Smoothing (default: 0)
+	 * @param radius (int) - Smoothing radius. (default: 0)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
@@ -110,7 +110,7 @@ public class Tier8 {
 	 * @param psf ({@link ArrayJ}) - Kernel image.
 	 * @param normalization ({@link ArrayJ}) - Normalization image. (default: None)
 	 * @param output ({@link ArrayJ}) - Output image. (default: None)
-	 * @param iteration (int) - Maximum number of (default: 100)
+	 * @param iteration (int) - Maximum number of iterations. (default: 100)
 	 * @param regularization (float) - Regularization parameter. (default: 0.0)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
@@ -121,6 +121,52 @@ public class Tier8 {
 		Objects.requireNonNull(psf, "psf cannot be null");
 		Objects.requireNonNull(normalization, "normalization cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier8.deconvolve_fft(device.getRaw(), input.getRaw(), psf.getRaw(), normalization == null ? null : normalization.getRaw(), output == null ? null : output.getRaw(), iteration, regularization));
+    }
+    
+	/**
+	 * Resamples an image to make it isotropic by rescaling the image to a target spacing.
+	 * The current spacings of the image in x, y, and z dimensions must be provided and should be &amp;gt;= 0.
+	 * If the target spacing is &amp;lt;= 0 or not provided, the function assumes the target spacing is the minimum of the current spacings.
+	 * Finally, an interpolation option is provided to choose whether to interpolate the image during rescaling or not (default is true).
+	 * For label images, it is recommended to set the interpolation option to false.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image.
+	 * @param output ({@link ArrayJ}) - Output image. (default: None)
+	 * @param current_spacing_x (float) - Original spacing in x dimension. (default: 1.0)
+	 * @param current_spacing_y (float) - Original spacing in y dimension. (default: 1.0)
+	 * @param current_spacing_z (float) - Original spacing in z dimension. (default: 1.0)
+	 * @param target_spacing (float) - Target isotropic spacing. (default: -1.0)
+	 * @param interpolate (boolean) - If true, interpolate the image during rescaling. (default: True)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ makeIsotropic(DeviceJ device, ArrayJ input, ArrayJ output, float current_spacing_x, float current_spacing_y, float current_spacing_z, float target_spacing, boolean interpolate) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier8.make_isotropic(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), current_spacing_x, current_spacing_y, current_spacing_z, target_spacing, interpolate));
+    }
+    
+	/**
+	 * Resamples an image to make it anisotropic by rescaling the image to target spacings in x, y, and z dimensions.
+	 * The current isotropic spacing of the image in each dimension must be provided and should be &amp;gt;= 0.
+	 * If the target spacings for x, y, and z shoudl be provided and &amp;gt;= 0.
+	 * Finally, an interpolation option is provided to choose whether to interpolate the image during rescaling or not (default is true).
+	 * For label images, it is recommended to set the interpolation option to false.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image.
+	 * @param output ({@link ArrayJ}) - Output image. (default: None)
+	 * @param current_spacing (float) - Current spacing of the image in each dimension. (default: -1.0)
+	 * @param target_spacing_x (float) - Target spacing in x dimension. (default: -1.0)
+	 * @param target_spacing_y (float) - Target spacing in y dimension. (default: -1.0)
+	 * @param target_spacing_z (float) - Target spacing in z dimension. (default: -1.0)
+	 * @param interpolate (boolean) - If true, interpolate the image during rescaling. (default: True)
+	 * @return {@link ArrayJ}
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ makeAnisotropic(DeviceJ device, ArrayJ input, ArrayJ output, float current_spacing, float target_spacing_x, float target_spacing_y, float target_spacing_z, boolean interpolate) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier8.make_anisotropic(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), current_spacing, target_spacing_x, target_spacing_y, target_spacing_z, interpolate));
     }
     
 }

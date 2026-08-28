@@ -36,7 +36,7 @@ public class Tier7 {
     public static ArrayJ affineTransform(DeviceJ device, ArrayJ input, ArrayJ output, ArrayList<Float> transform_matrix, boolean interpolate, boolean resize) {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier7.affine_transform(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), Utils.toVector(transform_matrix), interpolate, resize));
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier7.affine_transform(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), Utils.toFloatVector(transform_matrix), interpolate, resize));
     }
     
 	/**
@@ -213,7 +213,7 @@ public class Tier7 {
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
 	 * @param input ({@link ArrayJ}) - Input image to process.
 	 * @param output ({@link ArrayJ}) - Output label image. (default: None)
-	 * @param radius (int) - Erosion (default: 1)
+	 * @param radius (int) - Erosion radius. (default: 1)
 	 * @return {@link ArrayJ}
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
@@ -262,6 +262,46 @@ public class Tier7 {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier7.voronoi_otsu_labeling(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), spot_sigma, outline_sigma));
+    }
+    
+	/**
+	 * Computes touching, distance-based, and neighborhood statistics of labels and their neighbors.
+	 * For each label in the input label image, this function computes statistics of its surrounding labels within specified proximal distances.
+	 * The statistics include the count of neighboring labels, their distances, if they are touching, how many pixels they share on the boundary, etc.
+	 * Important: This expect an isotropic image with isotropic pixel spacing.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param label ({@link ArrayJ}) - Input label image.
+	 * @param proximal_distances (ArrayList&amp;lt;Integer&amp;gt;) - Proximal distances list for analysis. (default: [10, 20, 40, 80, 160])
+	 * @param nearest_neighbor_ns (ArrayList&amp;lt;Integer&amp;gt;) - n-nearest neighbors list for analysis. (default: [1, 2, 3, 4, 5, 6, 7, 8, 10, 20])
+	 * @param dilation_radii (ArrayList&amp;lt;Integer&amp;gt;) - Vector of dilation radii to consider for analysis. (default: [5, 10])
+	 * @param include_background (boolean) - If true, the background label is included (but set to 0). (default: False)
+	 * @return HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static HashMap<String, ArrayList<Float>> labelsNeighborsStatistics(DeviceJ device, ArrayJ label, ArrayList<Integer> proximal_distances, ArrayList<Integer> nearest_neighbor_ns, ArrayList<Integer> dilation_radii, boolean include_background) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(label, "label cannot be null");
+        return Utils.toHashMap(net.clesperanto._internals.kernelj.Tier7.labels_neighbors_statistics(device.getRaw(), label.getRaw(), Utils.toIntVector(proximal_distances), Utils.toIntVector(nearest_neighbor_ns), Utils.toIntVector(dilation_radii), include_background));
+    }
+    
+	/**
+	 * Computes distance-based statistics of the nearest neighbor labels.
+	 * For each label in the input label image, this function computes statistics of the neighboring labels within specified proximal distances.
+	 * The statistics include the count of neighboring labels, their distances, if they are touching, how many pixels they share on the boundary, etc.
+	 * Important: This expect an isotropic image with isotropic pixel spacing.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param label ({@link ArrayJ}) - Input label image.
+	 * @param proximal_distances (ArrayList&amp;lt;Integer&amp;gt;) - Proximal distances list for analysis. (default: [10, 20, 40, 80, 160])
+	 * @param nearest_neighbor_ns (ArrayList&amp;lt;Integer&amp;gt;) - n-nearest neighbors list for analysis. (default: [1, 2, 3, 4, 5, 6, 7, 8, 10, 20])
+	 * @param dilation_radii (ArrayList&amp;lt;Integer&amp;gt;) - Vector of dilation radii to consider for analysis. (default: [5, 10])
+	 * @return HashMap&amp;lt;String, ArrayList&amp;lt;Float&amp;gt;&amp;gt;
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+	@Deprecated
+    public static HashMap<String, ArrayList<Float>> statisticsOfLabelledNeighbors(DeviceJ device, ArrayJ label, ArrayList<Integer> proximal_distances, ArrayList<Integer> nearest_neighbor_ns, ArrayList<Integer> dilation_radii) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(label, "label cannot be null");
+        return Utils.toHashMap(net.clesperanto._internals.kernelj.Tier7.statistics_of_labelled_neighbors(device.getRaw(), label.getRaw(), Utils.toIntVector(proximal_distances), Utils.toIntVector(nearest_neighbor_ns), Utils.toIntVector(dilation_radii)));
     }
     
 }
