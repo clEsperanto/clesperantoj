@@ -275,7 +275,7 @@
 							<executable>bash</executable>
 							<commandlineArgs>${project.basedir}/native/cppbuild.sh</commandlineArgs>
 							<environmentVariables>
-								<CLE_BACKEND>${CLE_BACKEND}</CLE_BACKEND>
+								<CLE_BACKEND>${clic.backend}</CLE_BACKEND>
 							</environmentVariables>
 							<workingDirectory>${project.basedir}/native</workingDirectory>
 						</configuration>
@@ -285,7 +285,6 @@
 	        <plugin>
 	       		<groupId>org.codehaus.mojo</groupId>
 	       		<artifactId>build-helper-maven-plugin</artifactId>
-	       		<!-- TODO remove <version>3.3.0</version> -->
 	       		<executions>
 	                <execution>
 	           			<id>add-source</id>
@@ -303,7 +302,6 @@
 	        </plugin>
 			<plugin>
 		    	<artifactId>maven-compiler-plugin</artifactId>
-	       		<!-- TODO remove <version>3.12.1</version> -->
 		    	<configuration>
 		      		<source>1.8</source>
 		      		<target>1.8</target>
@@ -330,7 +328,6 @@
 		    <plugin>
 				<groupId>org.bytedeco</groupId>
 				<artifactId>javacpp</artifactId>
-				<!-- <version>1.5.10</version> -->
     			<version>${javacpp.version}</version>
 				<configuration>
 					<compilerOptions>
@@ -401,7 +398,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-	       		<!-- TODO remove <version>2.22.2</version> -->
 			    <configuration>
 	                <forkCount>1</forkCount>
 	                <reuseForks>false</reuseForks>
