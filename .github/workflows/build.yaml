@@ -98,6 +98,10 @@ jobs:
           sudo swapon --show
         shell: bash -l {0}
 
+      - name: Install POCL (CPU OpenCL device) - macOS
+        if: runner.os == 'macOS'
+        run: brew install pocl
+        shell: bash -l {0}
 
       - name: Clear read-only attributes on cached cppbuild - Windows
         if: runner.os == 'Windows'
