@@ -114,11 +114,11 @@ jobs:
           mvn clean install -DskipTests
         shell: bash -l {0}
 
-      - name: Run Java class
-        if: contains(matrix.os, 'macos')
-        run: >
-          mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
-          && java -cp target/classes:$(cat classpath.txt) net.clesperanto.ClesperantoJ
+      # - name: Run Java class
+      #   if: contains(matrix.os, 'macos')
+      #   run: >
+      #     mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
+      #     && java -cp target/classes:$(cat classpath.txt) net.clesperanto.ClesperantoJ
 
       - name: Get Maven Version and Upload Artifact
         shell: bash

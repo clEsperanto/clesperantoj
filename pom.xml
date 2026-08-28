@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.scijava</groupId>
 		<artifactId>pom-scijava</artifactId>
-		<version>40.0.0</version>
+		<version>45.1.0</version>
 		<relativePath />
 	</parent>
 
@@ -262,7 +262,6 @@
 	        <!-- Execute cppbuild.sh to build cleperantoj a wrapper to clesperato.hpp -->
 			<plugin>
 				<artifactId>exec-maven-plugin</artifactId>
-				<!-- TODO remove <version>1.6.0</version> -->
 				<groupId>org.codehaus.mojo</groupId>
 				<executions>
 					<execution>
