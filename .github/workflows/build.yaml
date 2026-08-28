@@ -114,6 +114,7 @@ jobs:
           mvn clean install -DskipTests
         shell: bash -l {0}
 
+      ## Need to be replace with a working pocl
       # - name: Run Java class
       #   if: contains(matrix.os, 'macos')
       #   run: >
