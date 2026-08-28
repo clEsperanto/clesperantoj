@@ -93,13 +93,12 @@ public class DeviceJ {
 	 * Constructor that initializes the wanted device
 	 * IMPORTANT: Does not initialize the backend.
 	 *
-	 * TODO provide a better explanation of what deviceName is and what device type
-	 * is
-	 *
 	 * @param deviceName
-	 *                   the name of the device that wants to be initialized
+	 *                   the full or partial name of the device that wants to be initialized,
+	 *                   if multiple devices fit the name, the first of the list is initialized.
+	 * 					 e.g. "NVIDIA RTX 4090" or "NVIDIA" or "RTX"
 	 * @param deviceType
-	 *                   the type that wants to be initialized. If any type works,
+	 *                   the type of device that wants to be initialized, "cpu" or "gpu". If any type works,
 	 *                   the argument should be "all"
 	 */
 	private DeviceJ(String deviceName, String deviceType) {
@@ -146,13 +145,12 @@ public class DeviceJ {
 	 * openCL backend.
 	 * If not OpenCL backend is available the method will fail.
 	 *
-	 * TODO provide a better explanation of what deviceName is and what device type
-	 * is
-	 *
 	 * @param deviceName
-	 *                   the name of the device that wants to be initialized
+	 *                   the full or partial name of the device that wants to be initialized,
+	 *                   if multiple devices fit the name, the first of the list is initialized.
+	 * 					 e.g. "NVIDIA RTX 4090" or "NVIDIA" or "RTX"
 	 * @param deviceType
-	 *                   the type that wants to be initialized. If any type works,
+	 *                   the type of device that wants to be initialized, "cpu" or "gpu". If any type works,
 	 *                   the argument should be "all"
 	 * @return the wanted device where Clesperanto operations can be done.
 	 */
@@ -167,13 +165,12 @@ public class DeviceJ {
 	 * OpenCl backend.
 	 * If OpenCL backend is not available the method will fail.
 	 *
-	 * TODO provide a better explanation of what deviceName is and what device type
-	 * is
-	 *
 	 * @param deviceName
-	 *                   the name of the device that wants to be initialized
+	 *                   the full or partial name of the device that wants to be initialized,
+	 *                   if multiple devices fit the name, the first of the list is initialized.
+	 * 					 e.g. "NVIDIA RTX 4090" or "NVIDIA" or "RTX"
 	 * @param deviceType
-	 *                   the type that wants to be initialized. If any type works,
+	 *                   the type of device that wants to be initialized, "cpu" or "gpu". If any type works,
 	 *                   the argument should be "all"
 	 * @param backend
 	 *                   the type of backend that wants to be used. It should be
@@ -211,8 +208,8 @@ public class DeviceJ {
 	}
 
 	/**
-	 * TODO confirm if the devices are only GPUs or can be other hardware
-	 * Method that returns the available devices (GPUs) on the computer.
+	 * Method that returns the available compatible devices on the computer.
+	 * Devices types can be GPUs or CPUs.
 	 *
 	 * @return a list of the available devices in the computer
 	 */
@@ -226,13 +223,12 @@ public class DeviceJ {
 	}
 
 	/**
-	 * TODO confirm if the devices are only GPUs or can be other hardware
-	 * Method that returns the available devices (GPUs) of the given
-	 * {@code deviceType} on the computer.
+	 * Method that returns the available compatible devices of the given
+	 * {@code deviceType} on the computer, e.g. "gpu", "cpu", "all".
 	 * Using the {@code deviceType} "all" returns all the devices available, it is
 	 * the same as using {@link #getAvailableDevices()}.
 	 *
-	 * @param deviceType the type of device to look for
+	 * @param deviceType the type of device to look for e.g. "gpu", "cpu", "all".
 	 * @return a list of the available devices in the computer of the specific type
 	 */
 	public static List<String> getAvailableDevices(String deviceType) {
