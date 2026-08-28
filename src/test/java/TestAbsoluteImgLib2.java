@@ -74,7 +74,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestAbsoluteImgLib2 {
+public class TestAbsoluteImgLib2 extends AbstractDeviceTest {
 
 	@Test
 	public void testAbsoluteImgLib2() {

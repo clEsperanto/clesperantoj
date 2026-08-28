@@ -75,7 +75,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestPullImagePlus {
+public class TestPullImagePlus extends AbstractDeviceTest {
 
 	public final static int MAX_UINT16 = 65536;
 

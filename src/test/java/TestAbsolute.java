@@ -74,7 +74,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestAbsolute {
+public class TestAbsolute extends AbstractDeviceTest {
 
     @Test
     public void testAbsolute() {

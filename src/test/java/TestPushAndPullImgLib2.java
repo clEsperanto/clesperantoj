@@ -77,7 +77,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestPushAndPullImgLib2 {
+public class TestPushAndPullImgLib2 extends AbstractDeviceTest {
 
 	public final static long MAX_UINT32 = (long) Math.pow(2, 32);
 
