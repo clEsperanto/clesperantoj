@@ -21,9 +21,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: native/clesperantoj/cppbuild
-          key: cmake-${{ runner.os }}-${{ hashFiles('native/clesperantoj/CMakeLists.txt', 'native/clesperantoj/clic/CMakeLists.txt', 'pom.xml') }}
-          restore-keys: |
-            cmake-${{ runner.os }}-
+          key: cmake-v2-${{ runner.os }}-${{ hashFiles('native/clesperantoj/CMakeLists.txt', 'native/clesperantoj/clic/CMakeLists.txt', 'pom.xml') }}
 
       - name: Setup java
         uses: actions/setup-java@v6
