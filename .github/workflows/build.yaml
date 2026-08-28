@@ -28,18 +28,21 @@ jobs:
             cxx-compiler: g++
             cmake-build-type: Release
             cmake-build-flag: ""
+            java-arch: x64
           - name: windows
             os: windows-2022
             c-compiler: cl.exe
             cxx-compiler: cl.exe
             cmake-build-type: Release
             cmake-build-flag: -A x64
+            java-arch: x64
           - name: macos
             os: macos-14
             c-compiler: clang
             cxx-compiler: clang++
             cmake-build-type: Release
             cmake-build-flag: ""
+            java-arch: aarch64
 
     runs-on: ${{ matrix.os }}
 
@@ -63,7 +66,7 @@ jobs:
         with:
           java-version: "11"
           distribution: zulu
-          architecture: 'x64'
+          architecture: ${{ matrix.java-arch }}
           cache: maven
 
       - name: Install ocl-icd-loader - windows
@@ -152,7 +155,7 @@ jobs:
         with:
           java-version: "11"
           distribution: zulu
-          architecture: 'x64'
+          architecture: 'aarch64'
           cache: maven
 
       - name: Download all platform-specific JAR files
