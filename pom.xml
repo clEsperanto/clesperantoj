@@ -11,7 +11,7 @@
 
 	<groupId>net.clesperanto</groupId>
 	<artifactId>clesperantoj</artifactId>
-	<version>0.20.0-SNAPSHOT</version>
+	<version>0.24.0-SNAPSHOT</version>
 
 	<properties>
 		<package-name>net.clesperanto</package-name>
@@ -275,7 +275,7 @@
 							<executable>bash</executable>
 							<commandlineArgs>${project.basedir}/native/cppbuild.sh</commandlineArgs>
 							<environmentVariables>
-								<CLE_BACKEND>${clic.backend}</CLE_BACKEND>
+								<CLE_BACKEND>${CLE_BACKEND}</CLE_BACKEND>
 							</environmentVariables>
 							<workingDirectory>${project.basedir}/native</workingDirectory>
 						</configuration>
