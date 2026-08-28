@@ -1,6 +1,6 @@
 # CMakeList to fetch and build the CLIc library and its dependencies (OpenCL) from source
 #  - CLIc is a C++ library for OpenCL image processing
-#  - it can be found at https://github.com/clEsperanto/CLIc_prototype.git
+#  - it can be found at https://github.com/clEsperanto/CLIc.git
 #  - we rely on the master branch
 cmake_minimum_required(VERSION 3.20)
 
@@ -31,7 +31,7 @@ option(BUILD_TESTING  OFF)
 option(BUILD_BENCHMARK  OFF)
 option(BUILD_SHARED_LIBS ON)
 # set(CLIC_REPO_TAG 0.13.4)
-set(CLIC_REPO_URL https://github.com/clEsperanto/CLIc_prototype.git)
+set(CLIC_REPO_URL https://github.com/clEsperanto/CLIc.git)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/clic)
 
 file(GLOB_RECURSE WRAPPER_SOURCES_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
