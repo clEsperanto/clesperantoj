@@ -96,6 +96,14 @@ jobs:
         shell: bash -l {0}
 
 
+      - name: Clear read-only attributes on cached cppbuild - Windows
+        if: runner.os == 'Windows'
+        run: |
+          if (Test-Path native/clesperantoj/cppbuild) {
+            Get-ChildItem -Path native/clesperantoj/cppbuild -Recurse -Force | ForEach-Object { $_.Attributes = 'Normal' }
+          }
+        shell: pwsh
+
       - name: Build with Maven
         run: |
           mvn clean install -DskipTests
