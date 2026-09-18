@@ -394,7 +394,6 @@ public:
 class Tier7
 {
 public:
-    static ArrayJ affine_transform(DeviceJ * device, ArrayJ * src, ArrayJ * dst, std::vector<float> * transform_matrix, bool interpolate, bool resize);
 	static ArrayJ eroded_otsu_labeling(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int number_of_erosions, float outline_sigma);
 	static ArrayJ rigid_transform(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float translate_x, float translate_y, float translate_z, float angle_x, float angle_y, float angle_z, bool centered, bool interpolate, bool resize);
 	static ArrayJ rotate(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float angle_x, float angle_y, float angle_z, bool centered, bool interpolate, bool resize);
@@ -416,13 +415,25 @@ class Tier8
 public:
     static ArrayJ smooth_labels(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int radius);
 	static ArrayJ smooth_connected_labels(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int radius);
-	static ArrayJ fft(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
-	static ArrayJ ifft(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
-	static ArrayJ convolve_fft(DeviceJ * device, ArrayJ * src, ArrayJ * kernel, ArrayJ * dst, bool correlate);
-	static ArrayJ deconvolve_fft(DeviceJ * device, ArrayJ * src, ArrayJ * psf, ArrayJ * normalization, ArrayJ * dst, int iteration, float regularization);
 	static ArrayJ make_isotropic(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float current_spacing_x, float current_spacing_y, float current_spacing_z, float target_spacing, bool interpolate);
 	static ArrayJ make_anisotropic(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float current_spacing, float target_spacing_x, float target_spacing_y, float target_spacing_z, bool interpolate);
 };
 
+
+class FFT
+{
+public:
+	static ArrayJ fft(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
+	static ArrayJ ifft(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
+	static ArrayJ convolve(DeviceJ * device, ArrayJ * src, ArrayJ * kernel, ArrayJ * dst, bool correlate);
+	static ArrayJ deconvolve(DeviceJ * device, ArrayJ * src, ArrayJ * psf, ArrayJ * normalization, ArrayJ * dst, int iteration, float regularization);
+	static std::vector<int> smooth_shape(std::vector<int> shape);
+};
+
+class Transform
+{
+public:
+	static ArrayJ affine_transform(DeviceJ * device, ArrayJ * src, ArrayJ * dst, AffineTransformJ * transform, bool interpolate, bool resize);
+};
 
 #endif // __INCLUDE_KERNEL_HPP

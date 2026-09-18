@@ -23,8 +23,8 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON) # Export all symbols for shared library
 # Fetch CLIC_REPO_TAG from the pom.xml file
 set(POM_FILE_PATH "${CMAKE_SOURCE_DIR}/../../pom.xml")
 file(READ ${POM_FILE_PATH} POM_CONTENTS)
-string(REGEX MATCH "<clic.version>([0-9]+\\.[0-9]+\\.[0-9]+)</clic.version>" _match ${POM_CONTENTS})
-string(REGEX REPLACE ".*<clic.version>([0-9]+\\.[0-9]+\\.[0-9]+)</clic.version>.*" "\\1" CLIC_REPO_TAG ${_match})
+string(REGEX MATCH "<clic.version>([^<]+)</clic.version>" _match ${POM_CONTENTS})
+string(REGEX REPLACE ".*<clic.version>([^<]+)</clic.version>.*" "\\1" CLIC_REPO_TAG ${_match})
 
 ## CLIc dependency
 option(BUILD_TESTING  OFF)

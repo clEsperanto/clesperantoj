@@ -19,7 +19,7 @@
 		<license.copyrightOwners>Robert Haase, MPI CBG and Stephane Rigaud, Institut Pasteur</license.copyrightOwners>
 		<!-- NB: Deploy releases to the SciJava Maven repository. -->
 		<releaseProfiles>sign,deploy-to-scijava</releaseProfiles>
-        <clic.version>0.24.0</clic.version>
+        <clic.version>master</clic.version>
         <!-- C++ backend for CLIc: OPENCL (default), CUDA, or METAL. Override with -Dclic.backend=CUDA -->
         <clic.backend>OPENCL</clic.backend>
 	</properties>
@@ -341,6 +341,7 @@
 						<includePath>${basedir}/native/clesperantoj/include</includePath>
 						<includePath>${basedir}/lib/${folder.name}/include/CLIc</includePath>
 						<includePath>${basedir}/lib/${folder.name}/include</includePath>
+						<includePath>${basedir}/lib/${folder.name}/include/eigen3</includePath>
 
 						<includePath>${basedir}/native/clesperantoj/cppbuild/_deps/clic-src/clic/include</includePath>
 						<includePath>${basedir}/native/clesperantoj/cppbuild/_deps/clic-build/clic/include</includePath>

@@ -18,28 +18,6 @@ import net.clesperanto.core.Utils;
 public class Tier7 {
 
 	/**
-	 * Applies an affine transformation matrix to an array and returns the result.
-	 * The transformation matrix must be 3×3 or 4×4, stored as a 1D array.
-	 * The matrix should be row-major, i.
-	 * e.
-	 * , the first 3 elements are the first row of the matrix.
-	 * If no matrix is given, the identity matrix will be used.
-	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param input ({@link ArrayJ}) - Input image to be transformed.
-	 * @param output ({@link ArrayJ}) - Output image. (default: None)
-	 * @param transform_matrix (ArrayList&amp;lt;Float&amp;gt;) - Affine transformation matrix (3×3 or 4×4). (default: None)
-	 * @param interpolate (boolean) - If true, bi/trilinear interpolation will be applied, if hardware allows. (default: False)
-	 * @param resize (boolean) - Automatically determines the size of the output depending on the rotation angles. (default: False)
-	 * @return {@link ArrayJ}
-	 * @throws NullPointerException if any of the device or input parameters are null.
-	 */
-    public static ArrayJ affineTransform(DeviceJ device, ArrayJ input, ArrayJ output, ArrayList<Float> transform_matrix, boolean interpolate, boolean resize) {
-        Objects.requireNonNull(device, "device cannot be null");
-		Objects.requireNonNull(input, "input cannot be null");
-        return new ArrayJ(net.clesperanto._internals.kernelj.Tier7.affine_transform(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), Utils.toFloatVector(transform_matrix), interpolate, resize));
-    }
-    
-	/**
 	 * Segments and labels an image using blurring, Otsu thresholding, binary erosion, and  masked Voronoi labeling.
 	 * After blurring and Otsu thresholding the image, iterative binary erosion is applied.
 	 * Objects in the eroded image are labeled, and the labels are extended to fit again into  the initial binary image using masked Voronoi labeling.

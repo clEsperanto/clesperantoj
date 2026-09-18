@@ -141,6 +141,9 @@ public class jclic implements InfoMapper {
                 new Info("UtilsJ")
                         .javaNames("_UtilsJ"));
         infoMap.put(
+                new Info("AffineTransformJ")
+                        .javaNames("_AffineTransformJ"));
+        infoMap.put(
                 new Info("DTypeJ")
                         .enumerate());
         infoMap.put(
@@ -152,6 +155,7 @@ public class jclic implements InfoMapper {
                         "cle::Device",
                         "cle::BackendManager",
                         "cle::Backend",
+                        "cle::transform::AffineTransform",
                         "toArrayJVector",
                         "std::shared_ptr<cle::Array>")
                         .skip());
