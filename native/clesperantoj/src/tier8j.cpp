@@ -15,26 +15,6 @@ ArrayJ Tier8::smooth_connected_labels(DeviceJ * device, ArrayJ * src, ArrayJ * d
     return ArrayJ{cle::tier8::smooth_connected_labels_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), radius)};
 }
 
-ArrayJ Tier8::fft(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
-{
-    return ArrayJ{cle::tier8::fft_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
-}
-
-ArrayJ Tier8::ifft(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
-{
-    return ArrayJ{cle::tier8::ifft_func(device->get(), src->get(), dst->get())};
-}
-
-ArrayJ Tier8::convolve_fft(DeviceJ * device, ArrayJ * src, ArrayJ * kernel, ArrayJ * dst, bool correlate)
-{
-    return ArrayJ{cle::tier8::convolve_fft_func(device->get(), src->get(), kernel->get(), dst == nullptr ? nullptr : dst->get(), correlate)};
-}
-
-ArrayJ Tier8::deconvolve_fft(DeviceJ * device, ArrayJ * src, ArrayJ * psf, ArrayJ * normalization, ArrayJ * dst, int iteration, float regularization)
-{
-    return ArrayJ{cle::tier8::deconvolve_fft_func(device->get(), src->get(), psf->get(), normalization == nullptr ? nullptr : normalization->get(), dst == nullptr ? nullptr : dst->get(), iteration, regularization)};
-}
-
 ArrayJ Tier8::make_isotropic(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float current_spacing_x, float current_spacing_y, float current_spacing_z, float target_spacing, bool interpolate)
 {
     return ArrayJ{cle::tier8::make_isotropic_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), current_spacing_x, current_spacing_y, current_spacing_z, target_spacing, interpolate)};

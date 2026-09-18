@@ -8,6 +8,7 @@
 #include "array.hpp"
 #include "backend.hpp"
 #include "device.hpp"
+#include "transform.hpp"
 #include "utils.hpp"
 
 class BackendJ
@@ -93,6 +94,34 @@ public:
     DTypeJ dtype() const;
     MTypeJ mtype() const;
     DeviceJ device() const;
+};
+
+class AffineTransformJ
+{
+
+private:
+    cle::transform::AffineTransform transform_;
+
+public:
+    AffineTransformJ();
+    AffineTransformJ(std::vector<float> *transform_matrix);
+
+    void scale(float scale_x, float scale_y, float scale_z);
+    void rotate(int axis, float angle_deg);
+    void rotateAroundXAxis(float angle_deg);
+    void rotateAroundYAxis(float angle_deg);
+    void rotateAroundZAxis(float angle_deg);
+    void translate(float translate_x, float translate_y, float translate_z);
+    void center(std::vector<int> shape, bool undo);
+    void shearInXPlane(float shear_y_deg, float shear_z_deg);
+    void shearInYPlane(float shear_x_deg, float shear_z_deg);
+    void shearInZPlane(float shear_x_deg, float shear_y_deg);
+    void deskewX(float angle_deg, float voxel_size_x, float voxel_size_y, float voxel_size_z, float scale_factor);
+    void deskewY(float angle_deg, float voxel_size_x, float voxel_size_y, float voxel_size_z, float scale_factor);
+
+    std::vector<float> getMatrix() const;
+
+    cle::transform::AffineTransform get() const;
 };
 
 class MemoryJ

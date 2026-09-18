@@ -5,11 +5,6 @@
 #include "kernelj.hpp"
 #include "tier7.hpp"
 
-ArrayJ Tier7::affine_transform(DeviceJ * device, ArrayJ * src, ArrayJ * dst, std::vector<float> * transform_matrix, bool interpolate, bool resize)
-{
-    return ArrayJ{cle::tier7::affine_transform_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), transform_matrix, interpolate, resize)};
-}
-
 ArrayJ Tier7::eroded_otsu_labeling(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int number_of_erosions, float outline_sigma)
 {
     return ArrayJ{cle::tier7::eroded_otsu_labeling_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), number_of_erosions, outline_sigma)};

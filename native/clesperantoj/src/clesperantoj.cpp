@@ -282,3 +282,121 @@ void MemoryJ::writeFromInt(const ArrayJ &array, int *data, const size_t &origin_
 {
     array.writeFrom(static_cast<void *>(data), origin_x, origin_y, origin_z, width, height, depth);
 }
+
+AffineTransformJ::AffineTransformJ() : transform_()
+{
+}
+
+AffineTransformJ::AffineTransformJ(std::vector<float> *transform_matrix)
+{
+    if (transform_matrix == nullptr)
+    {
+        transform_ = cle::transform::AffineTransform();
+        return;
+    }
+    if (transform_matrix->size() != 16 && transform_matrix->size() != 9)
+    {
+        throw std::runtime_error("Error: Transformation matrix size must be 9 or 16.");
+    }
+    std::array<float, 16> transform_matrix_arr;
+    if (transform_matrix->size() == 9)
+    {
+        transform_matrix_arr = {(*transform_matrix)[0],
+                                 (*transform_matrix)[1],
+                                 0,
+                                 (*transform_matrix)[2],
+                                 (*transform_matrix)[3],
+                                 (*transform_matrix)[4],
+                                 0,
+                                 (*transform_matrix)[5],
+                                 (*transform_matrix)[6],
+                                 (*transform_matrix)[7],
+                                 1,
+                                 0,
+                                 0,
+                                 0,
+                                 0,
+                                 1};
+    }
+    else
+    {
+        std::copy(transform_matrix->begin(), transform_matrix->end(), transform_matrix_arr.begin());
+    }
+    transform_ = cle::transform::AffineTransform(transform_matrix_arr);
+}
+
+void AffineTransformJ::scale(float scale_x, float scale_y, float scale_z)
+{
+    transform_.scale(scale_x, scale_y, scale_z);
+}
+
+void AffineTransformJ::rotate(int axis, float angle_deg)
+{
+    transform_.rotate(axis, angle_deg);
+}
+
+void AffineTransformJ::rotateAroundXAxis(float angle_deg)
+{
+    transform_.rotate_around_x_axis(angle_deg);
+}
+
+void AffineTransformJ::rotateAroundYAxis(float angle_deg)
+{
+    transform_.rotate_around_y_axis(angle_deg);
+}
+
+void AffineTransformJ::rotateAroundZAxis(float angle_deg)
+{
+    transform_.rotate_around_z_axis(angle_deg);
+}
+
+void AffineTransformJ::translate(float translate_x, float translate_y, float translate_z)
+{
+    transform_.translate(translate_x, translate_y, translate_z);
+}
+
+void AffineTransformJ::center(std::vector<int> shape, bool undo)
+{
+    std::array<size_t, 3> shape_arr = {1, 1, 1};
+    for (size_t i = 0; i < shape.size() && i < 3; ++i)
+    {
+        shape_arr[i] = static_cast<size_t>(shape[i]);
+    }
+    transform_.center(shape_arr, undo);
+}
+
+void AffineTransformJ::shearInXPlane(float shear_y_deg, float shear_z_deg)
+{
+    transform_.shear_in_x_plane(shear_y_deg, shear_z_deg);
+}
+
+void AffineTransformJ::shearInYPlane(float shear_x_deg, float shear_z_deg)
+{
+    transform_.shear_in_y_plane(shear_x_deg, shear_z_deg);
+}
+
+void AffineTransformJ::shearInZPlane(float shear_x_deg, float shear_y_deg)
+{
+    transform_.shear_in_z_plane(shear_x_deg, shear_y_deg);
+}
+
+void AffineTransformJ::deskewX(float angle_deg, float voxel_size_x, float voxel_size_y, float voxel_size_z, float scale_factor)
+{
+    transform_.deskew_x(angle_deg, voxel_size_x, voxel_size_y, voxel_size_z, scale_factor);
+}
+
+void AffineTransformJ::deskewY(float angle_deg, float voxel_size_x, float voxel_size_y, float voxel_size_z, float scale_factor)
+{
+    transform_.deskew_y(angle_deg, voxel_size_x, voxel_size_y, voxel_size_z, scale_factor);
+}
+
+std::vector<float> AffineTransformJ::getMatrix() const
+{
+    auto array = cle::transform::AffineTransform::toArray(transform_.getMatrix());
+    return std::vector<float>(array.begin(), array.end());
+}
+
+cle::transform::AffineTransform AffineTransformJ::get() const
+{
+    return transform_;
+}
