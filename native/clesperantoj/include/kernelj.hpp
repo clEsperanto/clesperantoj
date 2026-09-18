@@ -424,4 +424,20 @@ public:
 };
 
 
+class FFT
+{
+public:
+	static ArrayJ fft(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
+	static ArrayJ ifft(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
+	static ArrayJ convolve(DeviceJ * device, ArrayJ * src, ArrayJ * kernel, ArrayJ * dst, bool correlate);
+	static ArrayJ deconvolve(DeviceJ * device, ArrayJ * src, ArrayJ * psf, ArrayJ * normalization, ArrayJ * dst, int iteration, float regularization);
+	static std::vector<int> smooth_shape(std::vector<int> shape);
+};
+
+class Transform
+{
+public:
+	static ArrayJ affine_transform(DeviceJ * device, ArrayJ * src, ArrayJ * dst, AffineTransformJ * transform, bool interpolate, bool resize);
+};
+
 #endif // __INCLUDE_KERNEL_HPP
