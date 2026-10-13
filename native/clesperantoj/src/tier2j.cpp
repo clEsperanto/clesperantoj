@@ -149,21 +149,6 @@ ArrayJ Tier2::large_hessian_eigenvalue(DeviceJ * device, ArrayJ * src, ArrayJ * 
     return ArrayJ{cle::tier2::large_hessian_eigenvalue_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
-float Tier2::maximum_of_all_pixels(DeviceJ * device, ArrayJ * src)
-{
-    return cle::tier2::maximum_of_all_pixels_func(device->get(), src->get());
-}
-
-float Tier2::minimum_of_all_pixels(DeviceJ * device, ArrayJ * src)
-{
-    return cle::tier2::minimum_of_all_pixels_func(device->get(), src->get());
-}
-
-float Tier2::minimum_of_masked_pixels(DeviceJ * device, ArrayJ * src, ArrayJ * mask)
-{
-    return cle::tier2::minimum_of_masked_pixels_func(device->get(), src->get(), mask->get());
-}
-
 ArrayJ Tier2::opening_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z)
 {
     return ArrayJ{cle::tier2::opening_box_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), radius_x, radius_y, radius_z)};
@@ -187,6 +172,11 @@ ArrayJ Tier2::opening(DeviceJ * device, ArrayJ * src, ArrayJ * footprint, ArrayJ
 ArrayJ Tier2::binary_opening(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z, std::string connectivity)
 {
     return ArrayJ{cle::tier2::binary_opening_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), radius_x, radius_y, radius_z, connectivity)};
+}
+
+ArrayJ Tier2::skeletonize(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
+{
+    return ArrayJ{cle::tier2::skeletonize_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get())};
 }
 
 ArrayJ Tier2::radians_to_degrees(DeviceJ * device, ArrayJ * src, ArrayJ * dst)
@@ -247,16 +237,6 @@ ArrayJ Tier2::sub_stack(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int start_
 ArrayJ Tier2::reduce_stack(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int reduction_factor, int offset)
 {
     return ArrayJ{cle::tier2::reduce_stack_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), reduction_factor, offset)};
-}
-
-float Tier2::sum_of_all_pixels(DeviceJ * device, ArrayJ * src)
-{
-    return cle::tier2::sum_of_all_pixels_func(device->get(), src == nullptr ? nullptr : src->get());
-}
-
-float Tier2::product_of_all_pixels(DeviceJ * device, ArrayJ * src)
-{
-    return cle::tier2::product_of_all_pixels_func(device->get(), src == nullptr ? nullptr : src->get());
 }
 
 ArrayJ Tier2::top_hat_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z)

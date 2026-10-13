@@ -542,50 +542,6 @@ public class Tier2 {
     }
 
 	/**
-	 * Determines the maximum of all pixels in a given image.
-	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param input ({@link ArrayJ}) - Input image to process.
-	 * @return float
-	 * @see <a href="https://clij.github.io/clij2-docs/reference_maximumOfAllPixels">reference_maximumOfAllPixels</a>
-	 * @throws NullPointerException if any of the device or input parameters are null.
-	 */
-    public static float maximumOfAllPixels(DeviceJ device, ArrayJ input) {
-        Objects.requireNonNull(device, "device cannot be null");
-		Objects.requireNonNull(input, "input cannot be null");
-        return net.clesperanto._internals.kernelj.Tier2.maximum_of_all_pixels(device.getRaw(), input.getRaw());
-    }
-
-	/**
-	 * Determines the minimum of all pixels in a given image.
-	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param input ({@link ArrayJ}) - Input image to process.
-	 * @return float
-	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimumOfAllPixels">reference_minimumOfAllPixels</a>
-	 * @throws NullPointerException if any of the device or input parameters are null.
-	 */
-    public static float minimumOfAllPixels(DeviceJ device, ArrayJ input) {
-        Objects.requireNonNull(device, "device cannot be null");
-		Objects.requireNonNull(input, "input cannot be null");
-        return net.clesperanto._internals.kernelj.Tier2.minimum_of_all_pixels(device.getRaw(), input.getRaw());
-    }
-
-	/**
-	 * Determines the minimum intensity in a masked image, but only over pixels that have nonzero values in a separate mask image.
-	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param input ({@link ArrayJ}) - Input image to process.
-	 * @param mask ({@link ArrayJ}) - Input mask.
-	 * @return float
-	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimumOfMaskedPixels">reference_minimumOfMaskedPixels</a>
-	 * @throws NullPointerException if any of the device or input parameters are null.
-	 */
-    public static float minimumOfMaskedPixels(DeviceJ device, ArrayJ input, ArrayJ mask) {
-        Objects.requireNonNull(device, "device cannot be null");
-		Objects.requireNonNull(input, "input cannot be null");
-		Objects.requireNonNull(mask, "mask cannot be null");
-        return net.clesperanto._internals.kernelj.Tier2.minimum_of_masked_pixels(device.getRaw(), input.getRaw(), mask.getRaw());
-    }
-
-	/**
 	 * Opening operator, applies morphological opening to intensity images using a box-shaped footprint.
 	 * This operator also works with binary images.
 	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
@@ -676,6 +632,23 @@ public class Tier2 {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.binary_opening(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), radius_x, radius_y, radius_z, connectivity));
+    }
+
+	/**
+	 * Reduces the objects of a binary image to their skeleton: lines one pixel (voxel) wide that keep the topology of the objects (number of objects, holes and cavities) and their end points.
+	 * Works on 2D and 3D images; non-zero pixels are considered foreground.
+	 * The result is similar, but not identical pixel by pixel, to scikit-image's skeletonize (Lee method in 3D).
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input binary image.
+	 * @param output ({@link ArrayJ}) - Output skeleton image. (default: None)
+	 * @return {@link ArrayJ}
+	 * @see <a href="https://doi.org/10.1006/cgip.1994.1042">cgip.1994.1042</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static ArrayJ skeletonize(DeviceJ device, ArrayJ input, ArrayJ output) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.skeletonize(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw()));
     }
 
 	/**
@@ -888,33 +861,6 @@ public class Tier2 {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier2.reduce_stack(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), reduction_factor, offset));
-    }
-
-	/**
-	 * Determines the sum of all pixels in a given image.
-	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param input ({@link ArrayJ}) - Input image to process. (default: None)
-	 * @return float
-	 * @see <a href="https://clij.github.io/clij2-docs/reference_sumOfAllPixels">reference_sumOfAllPixels</a>
-	 * @throws NullPointerException if any of the device or input parameters are null.
-	 */
-    public static float sumOfAllPixels(DeviceJ device, ArrayJ input) {
-        Objects.requireNonNull(device, "device cannot be null");
-		Objects.requireNonNull(input, "input cannot be null");
-        return net.clesperanto._internals.kernelj.Tier2.sum_of_all_pixels(device.getRaw(), input == null ? null : input.getRaw());
-    }
-
-	/**
-	 * Determines the product of all pixels in a given image.
-	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
-	 * @param input ({@link ArrayJ}) - Input image to process. (default: None)
-	 * @return float
-	 * @throws NullPointerException if any of the device or input parameters are null.
-	 */
-    public static float productOfAllPixels(DeviceJ device, ArrayJ input) {
-        Objects.requireNonNull(device, "device cannot be null");
-		Objects.requireNonNull(input, "input cannot be null");
-        return net.clesperanto._internals.kernelj.Tier2.product_of_all_pixels(device.getRaw(), input == null ? null : input.getRaw());
     }
 
 	/**
