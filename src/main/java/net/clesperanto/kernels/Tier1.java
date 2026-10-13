@@ -1727,6 +1727,50 @@ public class Tier1 {
     }
 
 	/**
+	 * Determines the maximum of all pixels in a given image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @return float
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_maximumOfAllPixels">reference_maximumOfAllPixels</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static float maximumOfAllPixels(DeviceJ device, ArrayJ input) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return net.clesperanto._internals.kernelj.Tier1.maximum_of_all_pixels(device.getRaw(), input.getRaw());
+    }
+
+	/**
+	 * Determines the minimum of all pixels in a given image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @return float
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimumOfAllPixels">reference_minimumOfAllPixels</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static float minimumOfAllPixels(DeviceJ device, ArrayJ input) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return net.clesperanto._internals.kernelj.Tier1.minimum_of_all_pixels(device.getRaw(), input.getRaw());
+    }
+
+	/**
+	 * Determines the minimum intensity in a masked image, but only over pixels that have nonzero values in a separate mask image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process.
+	 * @param mask ({@link ArrayJ}) - Input mask.
+	 * @return float
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_minimumOfMaskedPixels">reference_minimumOfMaskedPixels</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static float minimumOfMaskedPixels(DeviceJ device, ArrayJ input, ArrayJ mask) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+		Objects.requireNonNull(mask, "mask cannot be null");
+        return net.clesperanto._internals.kernelj.Tier1.minimum_of_masked_pixels(device.getRaw(), input.getRaw(), mask.getRaw());
+    }
+
+	/**
 	 * Computes the local mode of a pixels box shaped neighborhood.
 	 * This can be used to postprocess and locally correct semantic segmentation results.
 	 * The box is specified by its halfwidth and halfheight (radius).
@@ -2841,6 +2885,33 @@ public class Tier1 {
         Objects.requireNonNull(device, "device cannot be null");
 		Objects.requireNonNull(input, "input cannot be null");
         return new ArrayJ(net.clesperanto._internals.kernelj.Tier1.subtract_image_from_scalar(device.getRaw(), input.getRaw(), output == null ? null : output.getRaw(), scalar));
+    }
+
+	/**
+	 * Determines the sum of all pixels in a given image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process. (default: None)
+	 * @return float
+	 * @see <a href="https://clij.github.io/clij2-docs/reference_sumOfAllPixels">reference_sumOfAllPixels</a>
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static float sumOfAllPixels(DeviceJ device, ArrayJ input) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return net.clesperanto._internals.kernelj.Tier1.sum_of_all_pixels(device.getRaw(), input == null ? null : input.getRaw());
+    }
+
+	/**
+	 * Determines the product of all pixels in a given image.
+	 * @param device ({@link DeviceJ}) - Device to perform the operation on.
+	 * @param input ({@link ArrayJ}) - Input image to process. (default: None)
+	 * @return float
+	 * @throws NullPointerException if any of the device or input parameters are null.
+	 */
+    public static float productOfAllPixels(DeviceJ device, ArrayJ input) {
+        Objects.requireNonNull(device, "device cannot be null");
+		Objects.requireNonNull(input, "input cannot be null");
+        return net.clesperanto._internals.kernelj.Tier1.product_of_all_pixels(device.getRaw(), input == null ? null : input.getRaw());
     }
 
 	/**

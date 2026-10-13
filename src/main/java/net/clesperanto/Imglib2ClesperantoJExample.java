@@ -69,7 +69,6 @@ import net.clesperanto.core.DeviceJ;
 import net.clesperanto.core.MemoryType;
 import net.clesperanto.imglib2.ImgLib2Converters;
 import net.clesperanto.kernels.Tier1;
-import net.clesperanto.kernels.Tier2;
 import net.imglib2.img.Img;
 import net.imglib2.img.array.ArrayImgs;
 import net.imglib2.type.numeric.real.FloatType;
@@ -101,7 +100,7 @@ public class Imglib2ClesperantoJExample {
         output_img = ImgLib2Converters.copyArrayJToImgLib2(output);
         output_img.cursor().forEachRemaining(t -> System.out.println(t.get()));
 
-        Float sum = Tier2.sumOfAllPixels(currentDevice, output);
+        Float sum = Tier1.sumOfAllPixels(currentDevice, output);
         System.out.println("Sum of all pixels: " + sum);
     }
 

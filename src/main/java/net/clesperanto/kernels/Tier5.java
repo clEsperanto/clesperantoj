@@ -77,6 +77,7 @@ public class Tier5 {
 	 * @param connectivity (String) - Defines pixel neighborhood relationship, "box" or "sphere". (default: 'box')
 	 * @return {@link ArrayJ}
 	 * @see <a href="https://clij.github.io/clij2-docs/reference_connectedComponentsLabelingBox">reference_connectedComponentsLabelingBox</a>
+	 * @see <a href="https://doi.org/10.1109/TPDS.2018.2799216">TPDS.2018.2799216</a>
 	 * @throws NullPointerException if any of the device or input parameters are null.
 	 */
     public static ArrayJ connectedComponentLabeling(DeviceJ device, ArrayJ input, ArrayJ output, String connectivity) {

@@ -106,6 +106,9 @@ public:
 	static ArrayJ minimum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims);
 	static ArrayJ minimum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims);
 	static ArrayJ minimum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims);
+	static float maximum_of_all_pixels(DeviceJ * device, ArrayJ * src);
+	static float minimum_of_all_pixels(DeviceJ * device, ArrayJ * src);
+	static float minimum_of_masked_pixels(DeviceJ * device, ArrayJ * src, ArrayJ * mask);
 	static ArrayJ mode_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z);
 	static ArrayJ mode_sphere(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z);
 	static ArrayJ mode(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z, std::string connectivity);
@@ -168,6 +171,8 @@ public:
 	static ArrayJ variance_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int ddof, bool keep_dims);
 	static ArrayJ variance_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int ddof, bool keep_dims);
 	static ArrayJ subtract_image_from_scalar(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float scalar);
+	static float sum_of_all_pixels(DeviceJ * device, ArrayJ * src);
+	static float product_of_all_pixels(DeviceJ * device, ArrayJ * src);
 	static ArrayJ sum_reduction_x(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int blocksize);
 	static ArrayJ sum_x_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims);
 	static ArrayJ sum_y_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst, bool keep_dims);
@@ -245,14 +250,12 @@ public:
 	static ArrayJ label_spots(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
 	static ArrayJ pointlist_to_labelled_spots(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
 	static ArrayJ large_hessian_eigenvalue(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
-	static float maximum_of_all_pixels(DeviceJ * device, ArrayJ * src);
-	static float minimum_of_all_pixels(DeviceJ * device, ArrayJ * src);
-	static float minimum_of_masked_pixels(DeviceJ * device, ArrayJ * src, ArrayJ * mask);
 	static ArrayJ opening_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z);
 	static ArrayJ opening_sphere(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z);
 	static ArrayJ grayscale_opening(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z, std::string connectivity);
 	static ArrayJ opening(DeviceJ * device, ArrayJ * src, ArrayJ * footprint, ArrayJ * dst);
 	static ArrayJ binary_opening(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z, std::string connectivity);
+	static ArrayJ skeletonize(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
 	static ArrayJ radians_to_degrees(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
 	static ArrayJ reduce_labels_to_label_edges(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
 	static ArrayJ small_hessian_eigenvalue(DeviceJ * device, ArrayJ * src, ArrayJ * dst);
@@ -265,8 +268,6 @@ public:
 	static ArrayJ subtract_images(DeviceJ * device, ArrayJ * src0, ArrayJ * src1, ArrayJ * dst);
 	static ArrayJ sub_stack(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int start_z, int end_z);
 	static ArrayJ reduce_stack(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int reduction_factor, int offset);
-	static float sum_of_all_pixels(DeviceJ * device, ArrayJ * src);
-	static float product_of_all_pixels(DeviceJ * device, ArrayJ * src);
 	static ArrayJ top_hat_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z);
 	static ArrayJ top_hat_sphere(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z);
 	static ArrayJ top_hat(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z, std::string connectivity);
@@ -423,7 +424,6 @@ public:
 	static ArrayJ make_anisotropic(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float current_spacing, float target_spacing_x, float target_spacing_y, float target_spacing_z, bool interpolate);
 };
 
-
 class FFT
 {
 public:
@@ -433,7 +433,6 @@ public:
 	static ArrayJ deconvolve(DeviceJ * device, ArrayJ * src, ArrayJ * psf, ArrayJ * normalization, ArrayJ * dst, int iteration, float regularization);
 	static std::vector<int> smooth_shape(std::vector<int> shape);
 };
-
 class Transform
 {
 public:

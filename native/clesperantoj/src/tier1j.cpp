@@ -484,6 +484,21 @@ ArrayJ Tier1::minimum_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst,
     return ArrayJ{cle::tier1::minimum_z_projection_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), keep_dims)};
 }
 
+float Tier1::maximum_of_all_pixels(DeviceJ * device, ArrayJ * src)
+{
+    return cle::tier1::maximum_of_all_pixels_func(device->get(), src->get());
+}
+
+float Tier1::minimum_of_all_pixels(DeviceJ * device, ArrayJ * src)
+{
+    return cle::tier1::minimum_of_all_pixels_func(device->get(), src->get());
+}
+
+float Tier1::minimum_of_masked_pixels(DeviceJ * device, ArrayJ * src, ArrayJ * mask)
+{
+    return cle::tier1::minimum_of_masked_pixels_func(device->get(), src->get(), mask->get());
+}
+
 ArrayJ Tier1::mode_box(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float radius_x, float radius_y, float radius_z)
 {
     return ArrayJ{cle::tier1::mode_box_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), radius_x, radius_y, radius_z)};
@@ -792,6 +807,16 @@ ArrayJ Tier1::variance_z_projection(DeviceJ * device, ArrayJ * src, ArrayJ * dst
 ArrayJ Tier1::subtract_image_from_scalar(DeviceJ * device, ArrayJ * src, ArrayJ * dst, float scalar)
 {
     return ArrayJ{cle::tier1::subtract_image_from_scalar_func(device->get(), src->get(), dst == nullptr ? nullptr : dst->get(), scalar)};
+}
+
+float Tier1::sum_of_all_pixels(DeviceJ * device, ArrayJ * src)
+{
+    return cle::tier1::sum_of_all_pixels_func(device->get(), src == nullptr ? nullptr : src->get());
+}
+
+float Tier1::product_of_all_pixels(DeviceJ * device, ArrayJ * src)
+{
+    return cle::tier1::product_of_all_pixels_func(device->get(), src == nullptr ? nullptr : src->get());
 }
 
 ArrayJ Tier1::sum_reduction_x(DeviceJ * device, ArrayJ * src, ArrayJ * dst, int blocksize)
