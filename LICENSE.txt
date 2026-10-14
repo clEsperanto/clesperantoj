@@ -1,4 +1,4 @@
-Copyright (c) 2022 - 2025, Robert Haase, MPI CBG and Stephane Rigaud, Institut Pasteur
+Copyright (c) 2022 - 2025, Stephane Rigaud, Institut Pasteur and Robert Haase, MPI CBG
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
